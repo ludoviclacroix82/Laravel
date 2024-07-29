@@ -60,9 +60,14 @@ class RestaurantsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Restaurants $restaurants)
+    public function edit($id)
     {
-        //
+        // echo $id;
+        // dd(Restaurants::find($id));
+        return view(
+            'restaurants.edit',
+            ['restaurant' => Restaurants::find($id)]
+        );
     }
 
     /**
