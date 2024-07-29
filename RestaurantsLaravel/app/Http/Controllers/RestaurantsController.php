@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateRestaurantRequest;
 use App\Models\Restaurants;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class RestaurantsController extends Controller
      */
     public function index()
     {
-        return view('restaurants.index',['restaurants'=>Restaurants::latest()->get()]);
+        return view('restaurants.index', ['restaurants' => Restaurants::latest()->get()]);
     }
 
     /**
@@ -20,24 +21,40 @@ class RestaurantsController extends Controller
      */
     public function create()
     {
-        //
+        return view('restaurants.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateRestaurantRequest $request)
     {
-        //
+        $data = $request->validated();
+
+
+        Restaurants::create([
+            'name' => $data['name'],
+            'address' => $data['address'],
+            'zip_code' => $data['zip_code'],
+            'country' => $data['country'],
+            'description' => $data['description'],
+            'review' => $data['review'],
+            'updated_at' =>now(),
+            'created_at' =>now()
+        ]);
+
+        return redirect()->route('restaurants.create')->with('success', 'Restaurant créé avec succès !');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Restaurants $restaurants)
+    public function show($id)
     {
-        dd($restaurants);
-
+        return view(
+            'restaurants.show',
+            ['restaurant' => Restaurants::find($id)]
+        );
     }
 
     /**

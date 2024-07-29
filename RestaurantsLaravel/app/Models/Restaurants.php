@@ -9,4 +9,15 @@ class Restaurants extends Model
 {
     use HasFactory;
     protected $table = 'restaurants';
+
+    protected $fillable = [
+        'name',
+        'address',
+        'zip_code',
+        'country',
+        'description',
+        'review',
+        'updated_at',
+        'created_at'
+    ];
 }
