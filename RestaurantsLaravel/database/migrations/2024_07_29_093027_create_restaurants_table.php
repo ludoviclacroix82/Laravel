@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name',50);
             $table->string('address',80);
             $table->integer('zip_code');
+            $table->string('town',80);
             $table->string('country',80);
             $table->text('description');
             $table->integer('review');

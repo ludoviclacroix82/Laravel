@@ -2,14 +2,13 @@
 <form action="{{ $restaurant ? route('restaurants.update', $restaurant->id) : route('restaurants.store') }}" method="POST">
     @csrf
     @if($restaurant)
-        @method('PUT')
+        @method('PATCH')
     @endif
     @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
     @endif
-    {{dd($restaurant)}}
     <div>
         <label for="name">Name</label>
         <input type="text" id="name" name="name" value="{{ old('name', $restaurant->name ?? '') }}">

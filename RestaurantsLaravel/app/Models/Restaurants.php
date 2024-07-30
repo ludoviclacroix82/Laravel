@@ -14,6 +14,7 @@ class Restaurants extends Model
         'name',
         'address',
         'zip_code',
+        'town',
         'country',
         'description',
         'review',

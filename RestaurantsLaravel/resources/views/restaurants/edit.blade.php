@@ -1,1 +1,1 @@
-<x-restaurant-form />
+<x-restaurant-form :restaurant="$restaurant" />

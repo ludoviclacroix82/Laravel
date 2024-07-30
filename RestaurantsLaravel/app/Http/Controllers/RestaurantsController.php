@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateRestaurantRequest;
 use App\Models\Restaurants;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class RestaurantsController extends Controller
@@ -36,6 +37,7 @@ class RestaurantsController extends Controller
             'name' => $data['name'],
             'address' => $data['address'],
             'zip_code' => $data['zip_code'],
+            'town' => $data['town'],
             'country' => $data['country'],
             'description' => $data['description'],
             'review' => $data['review'],
@@ -62,20 +64,33 @@ class RestaurantsController extends Controller
      */
     public function edit($id)
     {
-        // echo $id;
-        // dd(Restaurants::find($id));
+        $restaurant = Restaurants::find($id);
         return view(
             'restaurants.edit',
-            ['restaurant' => Restaurants::find($id)]
+            ['restaurant' => $restaurant]
         );
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Restaurants $restaurants)
-    {
-        //
+    public function update(CreateRestaurantRequest $request, Restaurants $restaurants,$id)
+     {
+        $data = $request->validated();
+
+        DB::table('restaurants')
+            ->where('id',$id)
+            ->update([
+                'name' => $data['name'],
+                'address' => $data['address'],
+                'zip_code' => $data['zip_code'],
+                'town' => $data['town'],
+                'country' => $data['country'],
+                'description' => $data['description'],
+                'review' => $data['review'],
+                'updated_at' =>now(),
+            ]);       
+        return redirect()->route('restaurants.index')->with('success', 'Restaurant modifié avec succès !');
     }
 
     /**
