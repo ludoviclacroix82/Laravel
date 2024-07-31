@@ -14,11 +14,10 @@ return new class extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->string('company',80);
-            $table->integer('phone');
+            $table->string('phone');
             $table->string('email',255);
             $table->string('address',100);
             $table->string('tva');
-            $table->integer('invoices_id');
             $table->date('updated_at');
             $table->date('created_at');
         });

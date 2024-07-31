@@ -14,6 +14,7 @@
 
     a {
         display: inline-block;
+        text-decoration: none;
     }
 }
 
@@ -40,3 +41,29 @@
         box-shadow: 0 0 0 .2rem rgba(151, 34, 34, 0.5); // Effet de focus
     }
 }
+
+.button-canceled {
+    @extend .btn; // Étend les styles de la classe btn de Bootstrap
+
+    background-color: #007bff; // Couleur de fond personnalisée
+    color: #ffffff; // Couleur du texte
+    border-color: #007bff; // Couleur de la bordure
+
+    &:hover {
+        background-color: #0056b3; // Couleur de fond au survol
+        border-color: #0056b3; // Couleur de la bordure au survol
+        color: #ffffff; // Couleur du texte au survol
+    }
+
+    &:active {
+        background-color: #0056b3; // Couleur de fond quand actif
+        border-color: #0056b3; // Couleur de la bordure quand actif
+        color: #ffffff; // Couleur du texte quand actif
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 .2rem rgba(0, 123, 255, 0.5); /* Effet de focus pour bouton désactivé */
+      }
+      
+}
+  

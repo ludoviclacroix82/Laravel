@@ -16,7 +16,6 @@ class Clients extends Model
         'email',
         'address',
         'tva',
-        'invoices_id',
         'updated_at',
         'created_at'
     ];

@@ -1,0 +1,89 @@
+// Variables
+$alert-padding-y: 1rem;
+$alert-padding-x: 1.5rem;
+$alert-margin-bottom: 1rem;
+$alert-border-radius: 0.375rem;
+$alert-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+
+// Couleurs des alertes
+$alert-colors: (
+  "primary": #cce5ff,
+  "secondary": #e2e3e5,
+  "success": #d4edda,
+  "danger": #f8d7da,
+  "warning": #fff3cd,
+  "info": #d1ecf1,
+  "light": #fefefe,
+  "dark": #d6d8d9
+);
+
+$alert-text-colors: (
+  "primary": #004085,
+  "secondary": #383d41,
+  "success": #155724,
+  "danger": #721c24,
+  "warning": #856404,
+  "info": #0c5460,
+  "light": #818182,
+  "dark": #1b1e21
+);
+
+// Mixin pour les alertes
+@mixin alert-variant($name, $background, $color) {
+  &.alert-#{$name} {
+    background-color: $background;
+    color: $color;
+    padding: $alert-padding-y $alert-padding-x;
+    margin-bottom: $alert-margin-bottom;
+    border-radius: $alert-border-radius;
+    box-shadow: $alert-box-shadow;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    animation: slideAlert 3s forwards;
+
+    .btn-close {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      border: 0;
+      background-color: transparent;
+      color: inherit;
+      font-size: 1.25rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    
+  }
+}
+.alert-static {
+      position: relative !important;
+      animation: none !important;
+      left: 0;
+      
+    }
+// Génération des styles d'alertes
+.alert {
+  @each $name, $color in $alert-colors {
+    @include alert-variant($name, $color, map-get($alert-text-colors, $name));
+  }
+}
+
+@keyframes slideAlert {
+  0% {
+    left: -300px
+  }
+
+  50% {
+    left: 20px;
+  }
+
+  60% {
+    left: 20px;
+  }
+
+  100% {
+    left: -300px
+  }
+}

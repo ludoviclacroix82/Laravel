@@ -16,7 +16,10 @@ class ClientsController extends Controller
     public function index()
     {
         $count = Clients::count();
-        return view('clients', ['clients' => Clients::latest()->get(), 'count' => $count]);
+        return view('clients', [
+            'clients' => db::table('clients')->paginate(10),
+            'count' => $count
+        ]);
     }
 
     /**
@@ -33,23 +36,25 @@ class ClientsController extends Controller
      */
     public function store(CreateClientsRequest $request)
     {
-        $datas = $request->validate();
-        dd($request);
 
-        if($datas){
+        $datas = $request->validated();
+
+        if ($datas) {
 
             Clients::create([
-            
-                'company'=>$datas['company'],
-                'phone'=>$datas['phone'],
-                'email'=>$datas['email'],
-                'address'=>$datas['address'],
-                'tva'=>$datas['tva'],
-                'invoices_id'=>$datas['invoices_id'],
-                'updated_at'=>now(),
-                'created_at'=>now()
+
+                'company' => $datas['company'],
+                'phone' => $datas['phone'],
+                'email' => $datas['email'],
+                'address' => $datas['address'],
+                'tva' => $datas['tva'],
+                'invoices_id' => $datas['invoices_id'],
+                'updated_at' => now(),
+                'created_at' => now()
             ]);
         }
+
+        return redirect()->route('admin.clients.create')->with('success', 'Client créé avec succès !');
     }
 
     /**
@@ -57,7 +62,6 @@ class ClientsController extends Controller
      */
     public function show(Clients $clients)
     {
-        //
     }
 
     /**
@@ -65,15 +69,35 @@ class ClientsController extends Controller
      */
     public function edit(Clients $clients)
     {
-        //
+        if ($clients)
+            return view('admin.clients.edit', ['clients' => $clients]);
+        else
+            return redirect()->route('clients')->with('noFound', 'Client non trouvé !');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Clients $clients)
+    public function update(CreateClientsRequest $request, Clients $clients)
     {
-        //
+        $client = $request->validated();
+
+        DB::table('clients')
+            ->update($client);
+
+        return redirect()->route('clients')->with('success', 'Client modifié avec succès !');
+    }
+
+    /**
+     * Show the form for remove the specified resource.
+     */
+    public function delete(Clients $clients)
+    {
+
+        if ($clients)
+            return view('admin.clients.delete', ['clients' => $clients]);
+        else
+            return redirect()->route('clients')->with('noFound', 'Client non trouvé !');
     }
 
     /**
@@ -81,6 +105,11 @@ class ClientsController extends Controller
      */
     public function destroy(Clients $clients)
     {
-        //
+        $result = $clients->delete();
+
+        if ($result)
+            return redirect()->route('clients')->with('success', 'Client supprimé avec succès !');
+        else
+            return redirect()->route('clients')->with('noFound', 'Client non trouvé !');
     }
 }

@@ -24,10 +24,9 @@ class CreateClientsRequest extends FormRequest
         return [
             'company'=>'required|min:1|max:80',
             'phone'=>'required',
-            'email'=>'requiredd|email|max:255',
+            'email'=>'required|email|max:255',
             'address'=>'required|min:1|max:100',
             'tva'=>'required',
-            'invoices_id'=>'required'
         ];
     }
 
@@ -38,7 +37,6 @@ class CreateClientsRequest extends FormRequest
             'email'=>'The email is required.',
             'address'=>'The address is required.',
             'tva'=>'The tva is required.',
-            'invoices_id'=>'The invoices_id is required.'
         ];
     }
 }
