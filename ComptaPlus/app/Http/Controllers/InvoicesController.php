@@ -37,14 +37,14 @@ class InvoicesController extends Controller
      */
     public function create()
     {
-    
+
         return view('admin/invoices/create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateInvoicesRequest $request,Invoices $invoices)
+    public function store(CreateInvoicesRequest $request, Invoices $invoices)
     {
         $datas = $request->validated();
         Invoices::create(
@@ -91,10 +91,25 @@ class InvoicesController extends Controller
     }
 
     /**
+     * Show the form for remove the specified resource.
+     */
+    public function delete(Invoices $invoices)
+    {
+        if ($invoices)
+            return view('admin.invoices.delete', ['invoices' => $invoices]);
+        else
+            return redirect()->route('invoices')->with('Nofound', 'Invoices No Found !');
+    }
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy(Invoices $invoices)
     {
-        //
+        $result = $invoices->delete();
+
+        if ($result)
+            return redirect()->route('invoices')->with('success', 'Invoices supprimée avec succès !');
+        else
+            return redirect()->route('invoices')->with('Nofound', 'Invoices No Found !');
     }
 }
