@@ -23,6 +23,6 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         Clients::factory(50)->create();
-        Invoices::factory(10)->create();
+        Invoices::factory(50)->create();
     }
 }

@@ -32,6 +32,11 @@ class InvoicesController extends Controller
         ]);
     }
 
+    public function invoicesClient(Invoices $invoices, Clients $clients)
+    {
+        dd($invoices);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

@@ -16,6 +16,7 @@ Route::prefix('clients')->group(function () {
 Route::prefix('invoices')->group(function () {
     Route::get('/', [InvoicesController::class,'index'])->name('invoices');
     Route::get('/show/{invoices:id}',[InvoicesController::class,'show']);
+    Route::get('/client/{invoices:client_id}',[InvoicesController::class,'invoicesClient']);
 });
 
 Route::prefix('admin')->group(function () {

@@ -6,7 +6,7 @@
 @section('content')
     <main id='clients-show'>
         <section>
-            <div class="client">
+            <div class="wrap">
                 <div class="header">
                     {{$client->company}}
                 </div>
@@ -40,10 +40,10 @@
                 </div>
                 <div class="button">
                     <button class="button-blue">
-                        <a href="/admin/clients/edit/{{$client->id}}"></a>
+                        <a href="/admin/clients/edit/{{$client->id}}">Update</a>
                     </button>
                     <button class="button-custom">
-                        <a href="/admin/clients/delete/{{$client->id}}"></a>
+                        <a href="/admin/clients/delete/{{$client->id}}">Delete</a>
                     </button>
                 </div>
             </div>
