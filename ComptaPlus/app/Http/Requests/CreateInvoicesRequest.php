@@ -22,7 +22,7 @@ class CreateInvoicesRequest extends FormRequest
     public function rules(): array
     {
         return [
-           'ref' => 'required||unique:invoices,ref',
+           'ref' => 'unique:invoices,ref',
             'title' => 'required',
             'price' => 'required|min:0',
             'tva' => 'required|min:0',

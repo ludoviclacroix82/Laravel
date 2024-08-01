@@ -35,21 +35,28 @@ class InvoicesController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Invoices $invoices)
+    public function create()
     {
-        $ref = $invoices->generateRef();
-        return view('admin/invoices/create', [
-            'reference' => $ref
-        ]);
+    
+        return view('admin/invoices/create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateInvoicesRequest $request)
+    public function store(CreateInvoicesRequest $request,Invoices $invoices)
     {
         $datas = $request->validated();
-        Invoices::create($datas);
+        Invoices::create(
+            [
+                'ref' => $invoices->generateRef(),
+                'title' => $datas['title'],
+                'price' => $datas['price'],
+                'tva' => $datas['tva'],
+                'description' => $datas['description'],
+                'client_id' => $datas['client_id'],
+            ]
+        );
 
         return redirect()->route('admin.invoices.create')->with('success', 'Invoices créée avec succès !');
     }

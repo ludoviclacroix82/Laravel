@@ -29,11 +29,6 @@
         @if($invoices)
             @method('patch')
             <input type="hidden" class="form-control" id="ref" name="ref" placeholder="Enter ref" value="{{ old('ref', $invoices->ref ?? '') }}" disabled>
-        @else
-        <div class="mb-3">
-            <label for="ref" class="form-label">Ref</label>
-            <input type="text" class="form-control" id="ref" name="ref" value="{{ old('ref', $reference ?? '') }}" disabled>
-        </div>
         @endif
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
