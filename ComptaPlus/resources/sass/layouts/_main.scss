@@ -6,69 +6,15 @@
     flex-direction: row
 }
 
-.pagination{
-    width: 100%;
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-    padding: 5px 0px;
-
-    nav{
-        display: flex;
-        flex-direction: row; 
-        .hidden{
-            p{
-                display: none;
-            }
-            span{
-                
-                display: none;
-                flex-direction: row; 
-            }
-        } 
-    }
-}
-
-#home {
-
+%page {
     @extend %main;
     min-height: 600px !important;
     display: flex;
-    align-items: center;
+    align-items: baseline;
 
     section {
         margin: 0 auto;
-        ;
-        width: 60%;
-        height: 500px;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-
-        .services {
-            width: 50%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            @extend .poppins-regular;
-            font-size: 2rem;
-        }
-    }
-
-}
-
-#clients {
-    @extend %main;
-    min-height: 600px !important;
-    display: flex;
-    align-items:baseline;
-
-    section {
-        margin: 0 auto;
-        width: 80%;
+        width: 90%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -108,10 +54,11 @@
                 text-align: left;
                 vertical-align: middle;
 
-                svg{
+                svg {
                     cursor: pointer;
                 }
             }
+
             thead {
                 background-color: #f4f4f4;
                 @extend .poppins-regular;
@@ -138,30 +85,29 @@
             th {
                 background-color: #f4f4f4;
             }
-            
+
         }
 
     }
 }
 
-#clients-admin {
-
+%show {
     @extend %main;
     min-height: 600px !important;
     display: flex;
-    align-items: center;
+    align-items: baseline;
 
     section {
         margin: 0 auto;
         width: 80%;
-        height: 500px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin-top: 100px;
 
-        .clients-form {            
-            // Style pour le conteneur
+        .wrap{
+            width: 50%;
 
             .header {
                 width: 100%;
@@ -176,6 +122,88 @@
                 background-color: #f4f4f4;
                 margin-bottom: 25px;
             }
+            .content{
+                @extend .poppins-regular;
+                font-size: 1rem;
+                line-height: 1.5rem;
+                display: flex;
+                justify-content: center;
+
+                label {
+                    @extend  .poppins-semibold;
+                    font-size: 1.05rem;
+                    float: left;
+                    padding-right: 5px;
+                }
+                ul{
+                    width: 100%;
+                    text-align: right;
+                    padding: 0px 20px;
+                    li {
+                        line-height: 2rem;
+                        &:nth-child(even) {
+                            background-color: #f4f4f4;
+                        }
+                    }
+                    .description 
+                    {
+                        text-align: left;
+                    }
+                }
+            }
+            .button{
+                width: 100%;
+                padding: 10px 0px;
+                display: flex;
+                flex-direction: row;
+ gap: 20px;
+                button{
+                    width: 50% !important;
+                   
+                }
+            }
+        }
+
+    }
+}
+
+%admin {
+
+    @extend %main;
+    min-height: 600px !important;
+    display: flex;
+    align-items: center;
+
+    section {
+        margin: 0 auto;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .form {
+            // Style pour le conteneur
+            width: 60%;
+            margin-top: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .header {
+                width: 100%;
+                height: 70px;
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                padding: 0px 15px;
+                @extend .poppins-regular;
+                font-size: 1.8rem;
+                border: 1px solid #ddd;
+                background-color: #f4f4f4;
+                margin-bottom: 25px;
+                margin-top: 25px;;
+            }
 
             .container {
                 background-color: #f8f9fa; // Fond du conteneur
@@ -188,51 +216,160 @@
             h2 {
                 margin-bottom: 1rem; // Espacement sous le titre
             }
-            form{
-                padding: 15px 0px;
+
+            form {
+                width: 90%;
+                margin: 0 auto;
                 // Style pour les champs de formulaire
+                .form-textarea{
+                    height: 150px !important;
+                }
                 .form-control {
+                    width: 100%;
+                    height: 20px;
                     border: 1px solid #ced4da; // Bordure des champs
                     border-radius: .25rem; // Bord arrondi
                     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out; // Transition pour le focus
-    
+                    padding: 15px;
+
                     &:focus {
-                        border-color: #80bdff; // Couleur de bordure au focus
+                        border-color: #7a1f1f; // Couleur de bordure au focus
                         background-color: #e9ecef; // Couleur de fond au focus
                         box-shadow: 0 0 .2rem rgba(38, 143, 255, .25); // Ombre au focus
                     }
+                    
                 }
-    
+
                 // Style pour les labels
                 .form-label {
                     font-weight: 500; // Poids de la police
                     margin-bottom: .5rem; // Espacement sous le label
+                    display: flex;
+                    align-items: start;
                 }
-    
+
                 // Style pour les marges entre les éléments de formulaire
                 .mb-3 {
                     margin-bottom: 1rem; // Espacement inférieur
-                }          
+                    width: 90%;
+                }
             }
 
         }
 
-        .delete{
+        .delete {
             width: 50%;
 
-            .header{
+            .header {
                 padding: 15px 0px;
             }
-            .button{
+
+            .button {
                 display: flex;
                 flex-direction: row;
-                gap:20px;
+                gap: 20px;
 
                 width: 100%;
-                button{
+
+                button {
                     width: 50%;
                 }
             }
         }
     }
+}
+.pagination {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    padding: 5px 0px;
+
+    a {
+        text-decoration: none;
+
+        &:hover {
+            color: #720909 !important;
+        }
+    }
+
+    nav {
+        display: flex;
+        flex-direction: row;
+
+        .hidden {
+            p {
+                display: none;
+            }
+
+            span {
+
+                display: none;
+                flex-direction: row;
+            }
+        }
+    }
+}
+
+#home {
+
+    @extend %main;
+    min-height: 600px !important;
+    display: flex;
+    align-items: center;
+
+    section {
+        margin: 0 auto;
+        ;
+        width: 60%;
+        height: 500px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        .services {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @extend .poppins-regular;
+            font-size: 2rem;
+        }
+    }
+
+}
+
+#clients {
+    @extend %main;
+    @extend %page;
+}
+
+#clients-show {
+    @extend %main;
+    @extend %show;
+}
+
+#clients-admin {
+
+    @extend %main;
+    @extend %admin;
+}
+
+#invoices {
+    @extend %main;
+    @extend %page;
+}
+
+#invoices-show {
+    @extend %main;
+    @extend %show;
+}
+
+#invoices-admin {
+
+    @extend %main;
+    @extend %admin;
 }

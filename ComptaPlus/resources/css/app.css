@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&family=Roboto:wght@400;500;700;900&display=swap");
-.poppins-regular, header nav .link a, header nav .login, header nav .login a, #home section .services, #clients section .header, #clients section table, #clients section table thead, #clients section table tbody tr .noClients, #clients-admin section .clients-form .header {
+.poppins-regular, header nav .link a, header nav .login, header nav .login a, #clients section .header, #invoices section .header, #clients section table, #invoices section table, #clients section table thead, #invoices section table thead, #clients section table tbody tr .noClients, #invoices section table tbody tr .noClients, #clients-show section .wrap .header, #invoices-show section .wrap .header, #clients-show section .wrap .content, #invoices-show section .wrap .content, #clients-admin section .form .header, #invoices-admin section .form .header, #home section .services {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal; }
@@ -10,7 +10,7 @@
   font-weight: 500;
   font-style: normal; }
 
-.poppins-semibold {
+.poppins-semibold, #clients-show section .wrap .content label, #invoices-show section .wrap .content label {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-style: normal; }
@@ -346,7 +346,7 @@ template {
 [hidden] {
   display: none; }
 
-.btn, .button-custom, .button-canceled {
+.btn, .button-custom, .button-blue {
   display: inline-block;
   font-weight: 400;
   text-align: center;
@@ -359,7 +359,7 @@ template {
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   cursor: pointer; }
-  .btn a, .button-custom a, .button-canceled a {
+  .btn a, .button-custom a, .button-blue a {
     display: inline-block;
     text-decoration: none; }
 
@@ -378,19 +378,19 @@ template {
   .button-custom:focus {
     box-shadow: 0 0 0 0.2rem rgba(151, 34, 34, 0.5); }
 
-.button-canceled {
+.button-blue {
   background-color: #007bff;
   color: #ffffff;
   border-color: #007bff; }
-  .button-canceled:hover {
+  .button-blue:hover {
     background-color: #0056b3;
     border-color: #0056b3;
     color: #ffffff; }
-  .button-canceled:active {
+  .button-blue:active {
     background-color: #0056b3;
     border-color: #0056b3;
     color: #ffffff; }
-  .button-canceled:focus {
+  .button-blue:focus {
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
     /* Effet de focus pour bouton désactivé */ }
 
@@ -645,12 +645,193 @@ header {
           background-color: #7a1f1f;
           transition: background-color 0.5s; }
 
-#home, #clients, #clients-admin {
+#clients, #invoices, #clients-show, #invoices-show, #clients-admin, #invoices-admin, #home {
   width: 100%;
   min-height: 500px;
   background-color: #fff;
   display: flex;
   flex-direction: row; }
+
+#clients, #invoices {
+  min-height: 600px !important;
+  display: flex;
+  align-items: baseline; }
+  #clients section, #invoices section {
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    #clients section .tools, #invoices section .tools {
+      width: 100%;
+      display: flex;
+      justify-content: end;
+      padding: 15px 5px; }
+    #clients section .header, #invoices section .header {
+      width: 100%;
+      height: 70px;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      padding: 0px 15px;
+      font-size: 1.8rem;
+      border: 1px solid #ddd;
+      background-color: #f4f4f4;
+      margin-bottom: 25px; }
+    #clients section table, #invoices section table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem; }
+      #clients section table th, #invoices section table th,
+      #clients section table td,
+      #invoices section table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+        vertical-align: middle; }
+        #clients section table th svg, #invoices section table th svg,
+        #clients section table td svg,
+        #invoices section table td svg {
+          cursor: pointer; }
+      #clients section table thead, #invoices section table thead {
+        background-color: #f4f4f4;
+        font-size: 0.9rem;
+        text-align: center; }
+      #clients section table tbody tr .noClients, #invoices section table tbody tr .noClients {
+        text-align: center;
+        font-size: 0.8rem; }
+      #clients section table tbody tr:nth-child(even), #invoices section table tbody tr:nth-child(even) {
+        background-color: #f4f4f4; }
+      #clients section table tbody tr:hover, #invoices section table tbody tr:hover {
+        background-color: #bbb; }
+      #clients section table th, #invoices section table th {
+        background-color: #f4f4f4; }
+
+#clients-show, #invoices-show {
+  min-height: 600px !important;
+  display: flex;
+  align-items: baseline; }
+  #clients-show section, #invoices-show section {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px; }
+    #clients-show section .wrap, #invoices-show section .wrap {
+      width: 50%; }
+      #clients-show section .wrap .header, #invoices-show section .wrap .header {
+        width: 100%;
+        height: 70px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        padding: 0px 15px;
+        font-size: 1.8rem;
+        border: 1px solid #ddd;
+        background-color: #f4f4f4;
+        margin-bottom: 25px; }
+      #clients-show section .wrap .content, #invoices-show section .wrap .content {
+        font-size: 1rem;
+        line-height: 1.5rem;
+        display: flex;
+        justify-content: center; }
+        #clients-show section .wrap .content label, #invoices-show section .wrap .content label {
+          font-size: 1.05rem;
+          float: left;
+          padding-right: 5px; }
+        #clients-show section .wrap .content ul, #invoices-show section .wrap .content ul {
+          width: 100%;
+          text-align: right;
+          padding: 0px 20px; }
+          #clients-show section .wrap .content ul li, #invoices-show section .wrap .content ul li {
+            line-height: 2rem; }
+            #clients-show section .wrap .content ul li:nth-child(even), #invoices-show section .wrap .content ul li:nth-child(even) {
+              background-color: #f4f4f4; }
+          #clients-show section .wrap .content ul .description, #invoices-show section .wrap .content ul .description {
+            text-align: left; }
+      #clients-show section .wrap .button, #invoices-show section .wrap .button {
+        width: 100%;
+        padding: 10px 0px;
+        display: flex;
+        flex-direction: row;
+        gap: 20px; }
+        #clients-show section .wrap .button button, #invoices-show section .wrap .button button {
+          width: 50% !important; }
+
+#clients-admin, #invoices-admin {
+  min-height: 600px !important;
+  display: flex;
+  align-items: center; }
+  #clients-admin section, #invoices-admin section {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    #clients-admin section .form, #invoices-admin section .form {
+      width: 60%;
+      margin-top: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; }
+      #clients-admin section .form .header, #invoices-admin section .form .header {
+        width: 100%;
+        height: 70px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        padding: 0px 15px;
+        font-size: 1.8rem;
+        border: 1px solid #ddd;
+        background-color: #f4f4f4;
+        margin-bottom: 25px;
+        margin-top: 25px; }
+      #clients-admin section .form .container, #invoices-admin section .form .container {
+        background-color: #f8f9fa;
+        padding: 2rem;
+        border-radius: .25rem;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); }
+      #clients-admin section .form h2, #invoices-admin section .form h2 {
+        margin-bottom: 1rem; }
+      #clients-admin section .form form, #invoices-admin section .form form {
+        width: 90%;
+        margin: 0 auto; }
+        #clients-admin section .form form .form-textarea, #invoices-admin section .form form .form-textarea {
+          height: 150px !important; }
+        #clients-admin section .form form .form-control, #invoices-admin section .form form .form-control {
+          width: 100%;
+          height: 20px;
+          border: 1px solid #ced4da;
+          border-radius: .25rem;
+          transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+          padding: 15px; }
+          #clients-admin section .form form .form-control:focus, #invoices-admin section .form form .form-control:focus {
+            border-color: #7a1f1f;
+            background-color: #e9ecef;
+            box-shadow: 0 0 0.2rem rgba(38, 143, 255, 0.25); }
+        #clients-admin section .form form .form-label, #invoices-admin section .form form .form-label {
+          font-weight: 500;
+          margin-bottom: .5rem;
+          display: flex;
+          align-items: start; }
+        #clients-admin section .form form .mb-3, #invoices-admin section .form form .mb-3 {
+          margin-bottom: 1rem;
+          width: 90%; }
+    #clients-admin section .delete, #invoices-admin section .delete {
+      width: 50%; }
+      #clients-admin section .delete .header, #invoices-admin section .delete .header {
+        padding: 15px 0px; }
+      #clients-admin section .delete .button, #invoices-admin section .delete .button {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        width: 100%; }
+        #clients-admin section .delete .button button, #invoices-admin section .delete .button button {
+          width: 50%; }
 
 .pagination {
   width: 100%;
@@ -659,6 +840,10 @@ header {
   flex-direction: row;
   justify-content: end;
   padding: 5px 0px; }
+  .pagination a {
+    text-decoration: none; }
+    .pagination a:hover {
+      color: #720909 !important; }
   .pagination nav {
     display: flex;
     flex-direction: row; }
@@ -687,116 +872,5 @@ header {
       justify-content: center;
       align-items: center;
       font-size: 2rem; }
-
-#clients {
-  min-height: 600px !important;
-  display: flex;
-  align-items: baseline; }
-  #clients section {
-    margin: 0 auto;
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; }
-    #clients section .tools {
-      width: 100%;
-      display: flex;
-      justify-content: end;
-      padding: 15px 5px; }
-    #clients section .header {
-      width: 100%;
-      height: 70px;
-      display: flex;
-      justify-content: start;
-      align-items: center;
-      padding: 0px 15px;
-      font-size: 1.8rem;
-      border: 1px solid #ddd;
-      background-color: #f4f4f4;
-      margin-bottom: 25px; }
-    #clients section table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.8rem; }
-      #clients section table th,
-      #clients section table td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-        vertical-align: middle; }
-        #clients section table th svg,
-        #clients section table td svg {
-          cursor: pointer; }
-      #clients section table thead {
-        background-color: #f4f4f4;
-        font-size: 0.9rem;
-        text-align: center; }
-      #clients section table tbody tr .noClients {
-        text-align: center;
-        font-size: 0.8rem; }
-      #clients section table tbody tr:nth-child(even) {
-        background-color: #f4f4f4; }
-      #clients section table tbody tr:hover {
-        background-color: #bbb; }
-      #clients section table th {
-        background-color: #f4f4f4; }
-
-#clients-admin {
-  min-height: 600px !important;
-  display: flex;
-  align-items: center; }
-  #clients-admin section {
-    margin: 0 auto;
-    width: 80%;
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; }
-    #clients-admin section .clients-form .header {
-      width: 100%;
-      height: 70px;
-      display: flex;
-      justify-content: start;
-      align-items: center;
-      padding: 0px 15px;
-      font-size: 1.8rem;
-      border: 1px solid #ddd;
-      background-color: #f4f4f4;
-      margin-bottom: 25px; }
-    #clients-admin section .clients-form .container {
-      background-color: #f8f9fa;
-      padding: 2rem;
-      border-radius: .25rem;
-      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); }
-    #clients-admin section .clients-form h2 {
-      margin-bottom: 1rem; }
-    #clients-admin section .clients-form form {
-      padding: 15px 0px; }
-      #clients-admin section .clients-form form .form-control {
-        border: 1px solid #ced4da;
-        border-radius: .25rem;
-        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out; }
-        #clients-admin section .clients-form form .form-control:focus {
-          border-color: #80bdff;
-          background-color: #e9ecef;
-          box-shadow: 0 0 0.2rem rgba(38, 143, 255, 0.25); }
-      #clients-admin section .clients-form form .form-label {
-        font-weight: 500;
-        margin-bottom: .5rem; }
-      #clients-admin section .clients-form form .mb-3 {
-        margin-bottom: 1rem; }
-    #clients-admin section .delete {
-      width: 50%; }
-      #clients-admin section .delete .header {
-        padding: 15px 0px; }
-      #clients-admin section .delete .button {
-        display: flex;
-        flex-direction: row;
-        gap: 20px;
-        width: 100%; }
-        #clients-admin section .delete .button button {
-          width: 50%; }
 
 /*# sourceMappingURL=app.css.map */

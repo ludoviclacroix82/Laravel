@@ -16,7 +16,7 @@
                     <h2>Client : <strong>{{$clients->company}}</strong></h2>
                 </div>
                 <div class="button">
-                    <button class="button-canceled">
+                    <button class="button-blue">
                         <a href="/clients">Annuler</a>
                     </button>
                     <button class="button-custom" type="submit">

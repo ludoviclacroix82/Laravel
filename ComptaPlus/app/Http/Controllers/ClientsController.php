@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\CreateClientsRequest;
 use App\Models\Clients;
-use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
 class ClientsController extends Controller
@@ -14,13 +13,22 @@ class ClientsController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $count = Clients::count();
-        return view('clients', [
-            'clients' => db::table('clients')->paginate(10),
-            'count' => $count
-        ]);
-    }
+{
+ 
+    $clientsCollection = Clients::paginate(10); 
+    $count = Clients::count(); 
+
+    $clientsCollection->getCollection()->transform(function ($client) {
+        $client->updated_at_format = $client->updated_at->format('d-m-Y');
+        $client->created_at_format = $client->created_at->format('d-m-Y');
+        return $client; 
+    });
+
+    return view('clients/clients', [
+        'clients' => $clientsCollection,
+        'count' => $count,
+    ]);
+}
 
     /**
      * Show the form for creating a new resource.
@@ -48,7 +56,6 @@ class ClientsController extends Controller
                 'email' => $datas['email'],
                 'address' => $datas['address'],
                 'tva' => $datas['tva'],
-                'invoices_id' => $datas['invoices_id'],
                 'updated_at' => now(),
                 'created_at' => now()
             ]);
@@ -62,6 +69,7 @@ class ClientsController extends Controller
      */
     public function show(Clients $clients)
     {
+        return view('clients/show',['client'=>$clients]);
     }
 
     /**

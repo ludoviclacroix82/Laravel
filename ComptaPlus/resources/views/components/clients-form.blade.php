@@ -1,4 +1,4 @@
-<div class="clients-form">
+<div class="form">
     @if ($errors->any())
     <div class="alert alert-danger alert-static">
         <ul>
@@ -17,6 +17,10 @@
     @if($clients)
     <div class="header">
         Modifier Client :  <strong> {{$clients->company}}</strong>
+    </div>
+    @else
+    <div class="header">
+        Création  Client
     </div>
     @endif
 
