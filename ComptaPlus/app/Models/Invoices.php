@@ -50,4 +50,9 @@ class Invoices extends Model
         return $reference;  // Affiche quelque chose comme "REF43-304-3122"
 
     }
+
+    public function getCompanyForm(Clients $clients){
+        $company =$clients->select('id','company')->get();   
+        return $company;
+    }
 }

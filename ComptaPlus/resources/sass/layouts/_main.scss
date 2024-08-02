@@ -47,6 +47,11 @@
             @extend .poppins-regular;
             font-size: 0.8rem;
 
+            .noinvoices{
+                @extend .poppins-regular;
+                font-size: 1rem;
+                text-align: center;
+            }
             th,
             td {
                 border: 1px solid #ddd;
@@ -224,6 +229,19 @@
                 .form-textarea{
                     height: 150px !important;
                 }
+                .form-select{
+                    width: 100%;
+                    height: 35px;
+                    border: 1px solid #ced4da; // Bordure des champs
+                    border-radius: .25rem; // Bord arrondi
+                    padding: 5px 15px;
+                    &:focus {
+                        border-color: #7a1f1f; // Couleur de bordure au focus
+                        background-color: #e9ecef; // Couleur de fond au focus;
+                        box-shadow: 0 0 .2rem rgba(38, 143, 255, .25); // Ombre au focus
+                    }
+
+                }
                 .form-control {
                     width: 100%;
                     height: 20px;
@@ -234,7 +252,7 @@
 
                     &:focus {
                         border-color: #7a1f1f; // Couleur de bordure au focus
-                        background-color: #e9ecef; // Couleur de fond au focus
+                        background-color: #e9ecef; // Couleur de fond au focus;
                         box-shadow: 0 0 .2rem rgba(38, 143, 255, .25); // Ombre au focus
                     }
                     

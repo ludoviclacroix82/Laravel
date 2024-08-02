@@ -20,4 +20,5 @@ class Clients extends Model
         'created_at'
     ];
 
+    
 }

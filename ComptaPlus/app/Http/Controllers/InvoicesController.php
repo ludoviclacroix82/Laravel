@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateInvoicesRequest;
-use Illuminate\Support\Facades\DB;
+use App\View\Components\InvoicesForm;
 use App\Models\Clients;
 use App\Models\Invoices;
 
@@ -26,6 +26,7 @@ class InvoicesController extends Controller
             return $invoice;
         });
 
+
         return view('invoices/invoices', [
             'invoices' => $invoicesCollection,
             'count' => $count,
@@ -34,16 +35,29 @@ class InvoicesController extends Controller
 
     public function invoicesClient(Invoices $invoices, Clients $clients)
     {
-        dd($invoices);
+        $datas = $invoices
+            ->where('client_id', $clients->id)
+            ->paginate(10);
+
+        $datas->getCollection()->transform(function ($invoice) use ($clients) {
+            $invoice->priceTTC = $invoice->totalTva();
+            $invoice->company = $invoice->getCompany($clients);
+            $invoice->updated_at_format = $invoice->updated_at->format('d-m-Y');
+            $invoice->created_at_format = $invoice->created_at->format('d-m-Y');
+            return $invoice;
+        });
+
+            return view('invoices/invoicesClient', ['invoices' => $datas,'clients'=>$clients]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Invoices $invoices, CLients $clients)
     {
 
-        return view('admin/invoices/create');
+        $clientAll = $invoices->getCompanyForm($clients);
+        return view('admin/invoices/create', ['clients' => $clientAll]);
     }
 
     /**
@@ -79,9 +93,11 @@ class InvoicesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Invoices $invoices)
+    public function edit(Invoices $invoices, Clients $clients)
     {
-        return view('admin.invoices.edit', ['invoices' => $invoices]);
+        $clientAll = $invoices->getCompanyForm($clients);
+
+        return view('admin.invoices.edit', ['invoices' => $invoices, 'clients' => $clientAll]);
     }
 
     /**

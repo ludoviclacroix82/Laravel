@@ -6,10 +6,8 @@
 @section('content')
 
 <main id='invoices-admin'>
-
     <section>
-    <x-invoices-form  />
+    <x-invoices-form :clientsAll="$clients" />
     </section>
-
 </main>
 @endsection

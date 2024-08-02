@@ -36,7 +36,7 @@ img,video {
 // Réinitialisation des éléments d'interaction
 button,input,select,textarea {
   background-color: transparent;
-  appearance: none;
+  //appearance: none;
   border-radius: 0;
   outline: 0;
   &:focus {

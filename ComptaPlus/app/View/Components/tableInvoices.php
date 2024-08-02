@@ -5,19 +5,16 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use App\Models\Clients;
 
-class InvoicesForm extends Component
+class tableInvoices extends Component
 {
     /**
      * Create a new component instance.
      */
     public $invoices;
-    public $clientsAll;
-    public function __construct($invoices = null,$clientsAll = null)
+    public function __construct($invoices = null)
     {
         $this->invoices = $invoices;
-        $this->clientsAll = $clientsAll;
     }
 
     /**
@@ -25,7 +22,6 @@ class InvoicesForm extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.invoices-form');
+        return view('components.table-invoices');
     }
-
 }

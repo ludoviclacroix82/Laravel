@@ -6,9 +6,9 @@
 @section('content')
 
 <main id='invoices-admin'>
-
+    
     <section>
-    <x-invoices-form :invoices="$invoices" />
+    <x-invoices-form :invoices="$invoices" :clientsAll="$clients" />
     </section>
 
 </main>

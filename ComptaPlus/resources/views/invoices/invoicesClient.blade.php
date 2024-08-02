@@ -9,7 +9,7 @@
     <section>
         <div class="tools">
             <button class="button-custom">
-                <a href="admin/invoices/add">
+                <a href="/admin/invoices/add">
                     Création invoices
                 </a>
             </button>
@@ -25,7 +25,7 @@
         </div>
         @endif
         <div class="header">
-            Invoices
+            Invoices : {{$clients->company}}
         </div>
         <div class="pagination">
             {{ $invoices->links() }}
