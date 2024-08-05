@@ -20,26 +20,34 @@ class Invoices extends Model
         'client_id',
         'tva_price',
         'updated_at',
-        'created_at'
+        'created_at',
+        'author_id'
     ];
 
-    public function totalTva(){
+    public function totalTva()
+    {
 
         $total = $this->price + ($this->price * ($this->tva / 100));
 
         return $total;
     }
 
-    public function getCompany(){
+    public function getCompany()
+    {
 
         $company = Clients::find($this->client_id);
-        return $company->company;
+
+        if ($company)
+            return $company->company;
+        else
+            return 'Unassigned';
     }
 
-    public function generateRef(){
+    public function generateRef()
+    {
 
         // Génération des parties variables de la référence
-        $partie1 = "REF". rand(0, 99);   // Première partie fixe
+        $partie1 = "REF" . rand(0, 99);   // Première partie fixe
         $partie2 = rand(0, 500);  // Deuxième partie aléatoire entre 100 et 999
         $partie3 = rand(0, 10000); // Troisième partie aléatoire entre 1000 et 9999
 
@@ -51,8 +59,19 @@ class Invoices extends Model
 
     }
 
-    public function getCompanyForm(Clients $clients){
-        $company =$clients->select('id','company')->get();   
+    public function getCompanyForm(Clients $clients)
+    {
+        $company = $clients->select('id', 'company')->get();
         return $company;
+    }
+
+    public function getAuthor(User $user)
+    {
+
+        $author = User::find($this->author_id);
+        if ($author)
+            return $author->name;
+        else
+            return 'Unassigned';
     }
 }

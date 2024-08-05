@@ -4,16 +4,16 @@
 
 
 @section('content')
-   
+
 <main id='home'>
    <section>
       <div class="services">
          <a href="/clients">
             Clients
-         </a>            
+         </a>
       </div>
       <div class="services">
-      <a href="/invoices">
+         <a href="/invoices">
             Factures
          </a>
       </div>

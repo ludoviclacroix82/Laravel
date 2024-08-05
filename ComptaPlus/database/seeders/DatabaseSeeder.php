@@ -17,10 +17,18 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        User::factory()->create([
+            'name' => 'Ludovic',
+            'email' => 'ludo@comptaPlus.com',
+            'password' => 'root',
+            'role'=>'admin'
+        ]);
+        User::factory()->create([
+            'name' => 'user',
+            'email' => 'user@comptaPlus.com',
+            'password' => 'root',
+            'role'=>'user'
+        ]);
 
         Clients::factory(50)->create();
         Invoices::factory(50)->create();

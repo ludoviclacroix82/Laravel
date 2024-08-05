@@ -8,7 +8,7 @@
 <main id='clients-admin'>
 
     <section>
-    <x-clients-form  />
+        <x-clients-form />
     </section>
 
 </main>

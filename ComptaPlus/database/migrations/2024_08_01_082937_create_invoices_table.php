@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('title',50);
             $table->integer('price');
             $table->integer('tva');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->integer('client_id');
+            $table->integer('author_id');
             $table->date('updated_at');
             $table->date('created_at');
         });

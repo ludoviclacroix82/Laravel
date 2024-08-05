@@ -3,24 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateInvoicesRequest;
-use App\View\Components\InvoicesForm;
+use Illuminate\Http\Request;
 use App\Models\Clients;
 use App\Models\Invoices;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+
 
 class InvoicesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Invoices $invoices, Clients $clients)
+    public function index(Invoices $invoices, Clients $clients, User $user)
     {
         $invoicesCollection = $invoices->paginate(10);
         $count = $invoices::count();
 
 
-        $invoicesCollection->getCollection()->transform(function ($invoice) use ($clients) {
+        $invoicesCollection->getCollection()->transform(function ($invoice) use ($clients, $user) {
             $invoice->priceTTC = $invoice->totalTva();
             $invoice->company = $invoice->getCompany($clients);
+            $invoice->author = $invoice->getAuthor($user);
             $invoice->updated_at_format = $invoice->updated_at->format('d-m-Y');
             $invoice->created_at_format = $invoice->created_at->format('d-m-Y');
             return $invoice;
@@ -33,21 +38,22 @@ class InvoicesController extends Controller
         ]);
     }
 
-    public function invoicesClient(Invoices $invoices, Clients $clients)
+    public function invoicesClient(Invoices $invoices, Clients $clients, User $user)
     {
         $datas = $invoices
             ->where('client_id', $clients->id)
             ->paginate(10);
 
-        $datas->getCollection()->transform(function ($invoice) use ($clients) {
+        $datas->getCollection()->transform(function ($invoice) use ($clients, $user) {
             $invoice->priceTTC = $invoice->totalTva();
             $invoice->company = $invoice->getCompany($clients);
+            $invoice->author = $invoice->getAuthor($user);
             $invoice->updated_at_format = $invoice->updated_at->format('d-m-Y');
             $invoice->created_at_format = $invoice->created_at->format('d-m-Y');
             return $invoice;
         });
 
-            return view('invoices/invoicesClient', ['invoices' => $datas,'clients'=>$clients]);
+        return view('invoices/invoicesClient', ['invoices' => $datas, 'clients' => $clients]);
     }
 
     /**
@@ -56,6 +62,8 @@ class InvoicesController extends Controller
     public function create(Invoices $invoices, CLients $clients)
     {
 
+        Gate::authorize('create',$invoices);
+
         $clientAll = $invoices->getCompanyForm($clients);
         return view('admin/invoices/create', ['clients' => $clientAll]);
     }
@@ -63,7 +71,7 @@ class InvoicesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateInvoicesRequest $request, Invoices $invoices)
+    public function store(CreateInvoicesRequest $request, Invoices $invoices, Auth $auth)
     {
         $datas = $request->validated();
         Invoices::create(
@@ -74,18 +82,19 @@ class InvoicesController extends Controller
                 'tva' => $datas['tva'],
                 'description' => $datas['description'],
                 'client_id' => $datas['client_id'],
+                'author_id' => Auth::user()->id
             ]
         );
-
         return redirect()->route('admin.invoices.create')->with('success', 'Invoices créée avec succès !');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Invoices $invoices,  Clients $clients)
+    public function show(Invoices $invoices, User $user)
     {
         $invoices->company = $invoices->getCompany();
+        $invoices->author = $invoices->getAuthor($user);
 
         return view('invoices/show', ['invoices' => $invoices]);
     }
@@ -95,6 +104,8 @@ class InvoicesController extends Controller
      */
     public function edit(Invoices $invoices, Clients $clients)
     {
+        Gate::authorize('update',$invoices);
+
         $clientAll = $invoices->getCompanyForm($clients);
 
         return view('admin.invoices.edit', ['invoices' => $invoices, 'clients' => $clientAll]);
@@ -116,6 +127,8 @@ class InvoicesController extends Controller
      */
     public function delete(Invoices $invoices)
     {
+        Gate::authorize('delete',$invoices);
+
         if ($invoices)
             return view('admin.invoices.delete', ['invoices' => $invoices]);
         else
@@ -124,12 +137,13 @@ class InvoicesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Invoices $invoices)
+    public function destroy(Invoices $invoices, Request $request)
     {
         $result = $invoices->delete();
+        $previousUrl = $request->input('previous_url');
 
         if ($result)
-            return redirect()->route('invoices')->with('success', 'Invoices supprimée avec succès !');
+            return redirect()->to($previousUrl)->with('success', 'Invoice supprimée avec succès !');
         else
             return redirect()->route('invoices')->with('Nofound', 'Invoices No Found !');
     }

@@ -26,7 +26,7 @@ class CreateInvoicesRequest extends FormRequest
             'title' => 'required',
             'price' => 'required|min:0',
             'tva' => 'required|min:0',
-            'description' => '',
+            'description' => 'nullable',
             'client_id' => 'required',
         ];
     }

@@ -28,7 +28,10 @@ header {
 
             h2 {
                 @extend .poppins-medium;
-                font-size: 1.2REM;
+                font-size: 1.2rem;
+            }
+            .user{
+                padding: 0px 15px;
             }
         }
         .link{

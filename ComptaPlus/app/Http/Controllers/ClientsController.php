@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\CreateClientsRequest;
 use App\Models\Clients;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ClientsController extends Controller
 {
@@ -33,8 +33,10 @@ class ClientsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Clients $clients)
     {
+
+        Gate::authorize('create', Clients::class);
 
         return view('admin.clients.create');
     }
@@ -45,6 +47,7 @@ class ClientsController extends Controller
     public function store(CreateClientsRequest $request)
     {
 
+        
         $datas = $request->validated();
 
         if ($datas) {
@@ -77,6 +80,9 @@ class ClientsController extends Controller
      */
     public function edit(Clients $clients)
     {
+
+        Gate::authorize('update', Clients::class);
+
         if ($clients)
             return view('admin.clients.edit', ['clients' => $clients]);
         else
@@ -101,6 +107,8 @@ class ClientsController extends Controller
      */
     public function delete(Clients $clients)
     {
+
+        Gate::authorize('delete', Clients::class);
 
         if ($clients)
             return view('admin.clients.delete', ['clients' => $clients]);

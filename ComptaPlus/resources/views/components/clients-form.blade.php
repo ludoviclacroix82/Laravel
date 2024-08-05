@@ -1,4 +1,12 @@
 <div class="form">
+    <div class="tools-links">
+        <a href="/clients">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5M10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5" />
+            </svg>
+            Retour Clients
+        </a>
+    </div>
     @if ($errors->any())
     <div class="alert alert-danger alert-static">
         <ul>
@@ -16,20 +24,20 @@
 
     @if($clients)
     <div class="header">
-        Modifier Client :  <strong> {{$clients->company}}</strong>
+        Modifier Client : <strong> {{$clients->company}}</strong>
     </div>
     @else
     <div class="header">
-        Création  Client
+        Création Client
     </div>
     @endif
 
 
 
     <form action="{{ $clients ? route('admin.clients.update', $clients->id) : route('admin.clients.store') }}" method="post">
-        @csrf 
+        @csrf
         @if($clients)
-            @method('patch')
+        @method('patch')
         @endif
         <div class="mb-3">
             <label for="company" class="form-label">Company</label>

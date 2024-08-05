@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&family=Roboto:wght@400;500;700;900&display=swap");
-.poppins-regular, header nav .link a, header nav .login, header nav .login a, #clients section .header, #invoices section .header, #clients section table, #invoices section table, #clients section table .noinvoices, #invoices section table .noinvoices, #clients section table thead, #invoices section table thead, #clients section table tbody tr .noClients, #invoices section table tbody tr .noClients, #clients-show section .wrap .header, #invoices-show section .wrap .header, #clients-show section .wrap .content, #invoices-show section .wrap .content, #clients-admin section .form .header, #invoices-admin section .form .header, #home section .services {
+.poppins-regular, header nav .link a, header nav .login, header nav .login a, #clients section .header, #invoices section .header, #clients section table, #invoices section table, #clients section table .noinvoices, #invoices section table .noinvoices, #clients section table thead, #invoices section table thead, #clients section table tbody tr .noClients, #invoices section table tbody tr .noClients, #clients-show section .wrap .header, #invoices-show section .wrap .header, #clients-show section .wrap .content, #invoices-show section .wrap .content, #clients-admin section .form .header, #invoices-admin section .form .header, #home section .services, #login .form .header {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal; }
@@ -408,7 +408,8 @@ template {
   position: absolute;
   top: 20px;
   left: 20px;
-  animation: slideAlert 3s forwards; }
+  animation: slideAlert 3s forwards;
+  margin-bottom: 50px; }
   .alert.alert-primary .btn-close {
     position: absolute;
     top: 0.5rem;
@@ -429,7 +430,8 @@ template {
   position: absolute;
   top: 20px;
   left: 20px;
-  animation: slideAlert 3s forwards; }
+  animation: slideAlert 3s forwards;
+  margin-bottom: 50px; }
   .alert.alert-secondary .btn-close {
     position: absolute;
     top: 0.5rem;
@@ -450,7 +452,8 @@ template {
   position: absolute;
   top: 20px;
   left: 20px;
-  animation: slideAlert 3s forwards; }
+  animation: slideAlert 3s forwards;
+  margin-bottom: 50px; }
   .alert.alert-success .btn-close {
     position: absolute;
     top: 0.5rem;
@@ -471,7 +474,8 @@ template {
   position: absolute;
   top: 20px;
   left: 20px;
-  animation: slideAlert 3s forwards; }
+  animation: slideAlert 3s forwards;
+  margin-bottom: 50px; }
   .alert.alert-danger .btn-close {
     position: absolute;
     top: 0.5rem;
@@ -492,7 +496,8 @@ template {
   position: absolute;
   top: 20px;
   left: 20px;
-  animation: slideAlert 3s forwards; }
+  animation: slideAlert 3s forwards;
+  margin-bottom: 50px; }
   .alert.alert-warning .btn-close {
     position: absolute;
     top: 0.5rem;
@@ -513,7 +518,8 @@ template {
   position: absolute;
   top: 20px;
   left: 20px;
-  animation: slideAlert 3s forwards; }
+  animation: slideAlert 3s forwards;
+  margin-bottom: 50px; }
   .alert.alert-info .btn-close {
     position: absolute;
     top: 0.5rem;
@@ -534,7 +540,8 @@ template {
   position: absolute;
   top: 20px;
   left: 20px;
-  animation: slideAlert 3s forwards; }
+  animation: slideAlert 3s forwards;
+  margin-bottom: 50px; }
   .alert.alert-light .btn-close {
     position: absolute;
     top: 0.5rem;
@@ -555,7 +562,8 @@ template {
   position: absolute;
   top: 20px;
   left: 20px;
-  animation: slideAlert 3s forwards; }
+  animation: slideAlert 3s forwards;
+  margin-bottom: 50px; }
   .alert.alert-dark .btn-close {
     position: absolute;
     top: 0.5rem;
@@ -599,7 +607,9 @@ header {
         width: 20px;
         height: 20px; }
       header nav .title h2 {
-        font-size: 1.2REM; }
+        font-size: 1.2rem; }
+      header nav .title .user {
+        padding: 0px 15px; }
     header nav .link {
       width: 70%;
       height: 100%;
@@ -644,7 +654,7 @@ header {
           background-color: #7a1f1f;
           transition: background-color 0.5s; }
 
-#clients, #invoices, #clients-show, #invoices-show, #clients-admin, #invoices-admin, #home {
+#clients, #invoices, #clients-show, #invoices-show, #clients-admin, #invoices-admin, #home, #login {
   width: 100%;
   min-height: 500px;
   background-color: #fff;
@@ -865,6 +875,18 @@ header {
       display: none;
       flex-direction: row; }
 
+.tools-links {
+  width: 100%;
+  text-align: left;
+  padding: 15px 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+  .tools-links a {
+    text-decoration: none; }
+    .tools-links a:hover {
+      color: #7a1f1f; }
+
 #home {
   min-height: 600px !important;
   display: flex;
@@ -884,5 +906,69 @@ header {
       justify-content: center;
       align-items: center;
       font-size: 2rem; }
+
+#login {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  #login .form {
+    width: 40%;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+    #login .form .header {
+      width: 100%;
+      height: 70px;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      padding: 0px 15px;
+      font-size: 1.8rem;
+      border: 1px solid #ddd;
+      background-color: #f4f4f4;
+      margin-bottom: 25px;
+      margin-top: 25px; }
+    #login .form .container {
+      background-color: #f8f9fa;
+      padding: 2rem;
+      border-radius: .25rem;
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); }
+    #login .form h2 {
+      margin-bottom: 1rem; }
+    #login .form form {
+      width: 90%;
+      margin: 0 auto; }
+      #login .form form .form-textarea {
+        height: 150px !important; }
+      #login .form form .form-select {
+        width: 100%;
+        height: 35px;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        padding: 5px 15px; }
+        #login .form form .form-select:focus {
+          border-color: #7a1f1f;
+          background-color: #e9ecef;
+          box-shadow: 0 0 0.2rem rgba(38, 143, 255, 0.25); }
+      #login .form form .form-control {
+        width: 100%;
+        height: 20px;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        padding: 15px; }
+        #login .form form .form-control:focus {
+          border-color: #7a1f1f;
+          background-color: #e9ecef;
+          box-shadow: 0 0 0.2rem rgba(38, 143, 255, 0.25); }
+      #login .form form .form-label {
+        font-weight: 500;
+        margin-bottom: .5rem;
+        display: flex;
+        align-items: start; }
+      #login .form form .mb-3 {
+        margin-bottom: 1rem;
+        width: 90%; }
 
 /*# sourceMappingURL=app.css.map */
