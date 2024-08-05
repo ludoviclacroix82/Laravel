@@ -43,6 +43,9 @@
                 </a>
                 <a href="/clients">Clients</a>
                 <a href="/invoices">Invoices</a>
+                
+                <a href="/admin">Admin</a>
+               
             </div>
             <div class="login">
                 @guest

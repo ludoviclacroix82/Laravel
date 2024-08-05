@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\InvoicesController;
@@ -29,11 +30,11 @@ Route::prefix('invoices')->group(function () {
     Route::get('/client/{clients:id}', [InvoicesController::class, 'invoicesClient'])->name('invoice.client');
 });
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('auth')->group(function () {
 
-    Route::get('/',);
+    Route::get('/',[AdminController::class,'index'])->name('admin.home');
 
-    Route::prefix('/clients')->middleware('auth')->group(function () {
+    Route::prefix('/clients')->group(function () {
 
         Route::get('/add', [ClientsController::class, 'create'])->name('admin.clients.create');
         Route::post('/add', [ClientsController::class, 'store'])->name('admin.clients.store');
