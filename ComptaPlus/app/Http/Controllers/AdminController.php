@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
+
 
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(Request $request,Auth $auth)
     {
-        return view('admin/home');
+        if (Gate::denies('admin.index')) {
+            return redirect()->route('home')->with('error',Auth::user()->name.' :  You do not have permission to view this page.');
+        }
+        return view('admin.home');
     }
-    
 }

@@ -408,8 +408,9 @@ template {
   position: absolute;
   top: 20px;
   left: 20px;
-  animation: slideAlert 3s forwards;
-  margin-bottom: 50px; }
+  animation: slideAlert 3.5s forwards;
+  margin-bottom: 50px;
+  width: 300px; }
   .alert.alert-primary .btn-close {
     position: absolute;
     top: 0.5rem;
@@ -430,8 +431,9 @@ template {
   position: absolute;
   top: 20px;
   left: 20px;
-  animation: slideAlert 3s forwards;
-  margin-bottom: 50px; }
+  animation: slideAlert 3.5s forwards;
+  margin-bottom: 50px;
+  width: 300px; }
   .alert.alert-secondary .btn-close {
     position: absolute;
     top: 0.5rem;
@@ -452,8 +454,9 @@ template {
   position: absolute;
   top: 20px;
   left: 20px;
-  animation: slideAlert 3s forwards;
-  margin-bottom: 50px; }
+  animation: slideAlert 3.5s forwards;
+  margin-bottom: 50px;
+  width: 300px; }
   .alert.alert-success .btn-close {
     position: absolute;
     top: 0.5rem;
@@ -474,8 +477,9 @@ template {
   position: absolute;
   top: 20px;
   left: 20px;
-  animation: slideAlert 3s forwards;
-  margin-bottom: 50px; }
+  animation: slideAlert 3.5s forwards;
+  margin-bottom: 50px;
+  width: 300px; }
   .alert.alert-danger .btn-close {
     position: absolute;
     top: 0.5rem;
@@ -496,8 +500,9 @@ template {
   position: absolute;
   top: 20px;
   left: 20px;
-  animation: slideAlert 3s forwards;
-  margin-bottom: 50px; }
+  animation: slideAlert 3.5s forwards;
+  margin-bottom: 50px;
+  width: 300px; }
   .alert.alert-warning .btn-close {
     position: absolute;
     top: 0.5rem;
@@ -518,8 +523,9 @@ template {
   position: absolute;
   top: 20px;
   left: 20px;
-  animation: slideAlert 3s forwards;
-  margin-bottom: 50px; }
+  animation: slideAlert 3.5s forwards;
+  margin-bottom: 50px;
+  width: 300px; }
   .alert.alert-info .btn-close {
     position: absolute;
     top: 0.5rem;
@@ -540,8 +546,9 @@ template {
   position: absolute;
   top: 20px;
   left: 20px;
-  animation: slideAlert 3s forwards;
-  margin-bottom: 50px; }
+  animation: slideAlert 3.5s forwards;
+  margin-bottom: 50px;
+  width: 300px; }
   .alert.alert-light .btn-close {
     position: absolute;
     top: 0.5rem;
@@ -562,8 +569,9 @@ template {
   position: absolute;
   top: 20px;
   left: 20px;
-  animation: slideAlert 3s forwards;
-  margin-bottom: 50px; }
+  animation: slideAlert 3.5s forwards;
+  margin-bottom: 50px;
+  width: 300px; }
   .alert.alert-dark .btn-close {
     position: absolute;
     top: 0.5rem;
@@ -578,9 +586,9 @@ template {
 @keyframes slideAlert {
   0% {
     left: -300px; }
-  50% {
+  20% {
     left: 20px; }
-  60% {
+  80% {
     left: 20px; }
   100% {
     left: -300px; } }

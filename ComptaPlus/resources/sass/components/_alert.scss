@@ -40,8 +40,9 @@ $alert-text-colors: (
     position: absolute;
     top: 20px;
     left: 20px;
-    animation: slideAlert 3s forwards;
+    animation: slideAlert 3.5s forwards;
     margin-bottom: 50px;
+    width: 300px;
 
     .btn-close {
       position: absolute;
@@ -76,11 +77,11 @@ $alert-text-colors: (
     left: -300px
   }
 
-  50% {
+  20% {
     left: 20px;
   }
 
-  60% {
+  80% {
     left: 20px;
   }
 
