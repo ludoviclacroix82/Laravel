@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ComptaPlus - @yield('title', 'Votre Titre')</title>
     @vite(['resources/css/app.css', 'resources/sass/style.scss','resources/js/app.js'])
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"> <!-- Pour les icônes -->
+
 </head>
 
 <body>
@@ -25,6 +28,7 @@
             {{ session('success') }}
         </div>
         @endif
+
         <nav>
             <div class="title">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -48,9 +52,9 @@
                 </a>
                 <a href="/clients">Clients</a>
                 <a href="/invoices">Invoices</a>
-                
+                @can('admin.index')
                 <a href="/admin">Admin</a>
-               
+                @endcan
             </div>
             <div class="login">
                 @guest

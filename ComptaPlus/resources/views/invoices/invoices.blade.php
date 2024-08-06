@@ -10,7 +10,7 @@
         <div class="tools">
             @Auth()
             <button class="button-custom">
-                <a href="admin/invoices/add">
+                <a href="{{route('admin.invoices.create')}}">
                     Création invoices
                 </a>
             </button>

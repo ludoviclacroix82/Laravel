@@ -81,3 +81,9 @@ template {
 [hidden] {
   display: none !important;
 }
+a{
+  color:#000 !important;
+  &:hover{
+    color : #720909;
+  }
+}

@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\InvoicesController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -36,6 +37,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::prefix('/clients')->group(function () {
 
+        Route::get('/', [AdminController::class, 'clientsHome'])->name('admin.clients.home');
+
         Route::get('/add', [ClientsController::class, 'create'])->name('admin.clients.create');
         Route::post('/add', [ClientsController::class, 'store'])->name('admin.clients.store');
 
@@ -47,6 +50,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     });
 
     Route::prefix('/invoices')->group(function () {
+
+        Route::get('/', [AdminController::class, 'invoicesHome'])->name('admin.invoices.home');
+
         Route::get('/add', [InvoicesController::class, 'create'])->name('admin.invoices.create');
         Route::post('/add', [InvoicesController::class, 'store'])->name('admin.invoices.store');
 
@@ -55,5 +61,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
         Route::get('/delete/{invoices:id}', [InvoicesController::class, 'delete'])->name('admin.invoices.delete');
         Route::delete('/delete/{invoices:id}', [InvoicesController::class, 'destroy']);
+    });
+
+    Route::prefix('/users')->group(function () {
+        
+        Route::get('/',[UserController::class,'index'])->name('admin.users.home');
+        Route::get('/show/{user:id}',[UserController::class,'show'])->name('admin.users.show');
     });
 });

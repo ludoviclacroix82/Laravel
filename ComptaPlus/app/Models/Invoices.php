@@ -74,4 +74,13 @@ class Invoices extends Model
         else
             return 'Unassigned';
     }
+    public function getCountInvoices(){
+
+        return Invoices::count();
+
+    }
+    public function getInvoiceslimited(){
+
+        return Invoices::orderBy('created_at', 'desc')->take(5)->get();
+    }
 }

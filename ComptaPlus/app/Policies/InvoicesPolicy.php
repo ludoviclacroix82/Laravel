@@ -35,33 +35,41 @@ class InvoicesPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Invoices $invoices): bool
+    public function update(User $user, Invoices $invoices)
     {
-        return $user->id === $invoices->author_id || $user->role === 'admin';
+        return $user->id === $invoices->author_id || $user->role === 'admin'
+            ? Response::allow()
+            : Response::deny('You do not have permission to view this page.');
 
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Invoices $invoices): bool
+    public function delete(User $user, Invoices $invoices)
     {
-        return $user->role === 'admin';
+        return $user->role === 'admin'
+            ? Response::allow()
+            : Response::deny('You do not have permission to view this page.');
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Invoices $invoices): bool
+    public function restore(User $user, Invoices $invoices)
     {
-        return $user->role === 'admin';
+        return $user->role === 'admin'
+        ? Response::allow()
+        : Response::deny('You do not have permission to view this page.');
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Invoices $invoices): bool
+    public function forceDelete(User $user, Invoices $invoices)
     {
-        return $user->role === 'admin';
+        return $user->role === 'admin'
+            ? Response::allow()
+            : Response::deny('You do not have permission to view this page.');
     }
 }

@@ -6,6 +6,60 @@
     flex-direction: row
 }
 
+%table {
+    table{
+
+        width: 100%;
+        border-collapse: collapse;
+        @extend .poppins-regular;
+        font-size: 0.8rem;
+    
+        .noinvoices{
+            @extend .poppins-regular;
+            font-size: 1rem;
+            text-align: center;
+        }
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            vertical-align: middle;
+    
+            svg {
+                cursor: pointer;
+            }
+        }
+    
+        thead {
+            background-color: #f4f4f4;
+            @extend .poppins-regular;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+    
+        tbody tr {
+            .noClients {
+                text-align: center;
+                @extend .poppins-regular;
+                font-size: 0.8rem;
+            }
+    
+            &:nth-child(even) {
+                background-color: #f4f4f4;
+            }
+    
+            &:hover {
+                background-color: #bbb;
+            }
+        }
+    
+        th {
+            background-color: #f4f4f4;
+        }
+    }
+
+}
 %page {
     @extend %main;
     min-height: 600px !important;
@@ -41,57 +95,7 @@
             margin-bottom: 25px;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            @extend .poppins-regular;
-            font-size: 0.8rem;
-
-            .noinvoices{
-                @extend .poppins-regular;
-                font-size: 1rem;
-                text-align: center;
-            }
-            th,
-            td {
-                border: 1px solid #ddd;
-                padding: 8px;
-                text-align: left;
-                vertical-align: middle;
-
-                svg {
-                    cursor: pointer;
-                }
-            }
-
-            thead {
-                background-color: #f4f4f4;
-                @extend .poppins-regular;
-                font-size: 0.9rem;
-                text-align: center;
-            }
-
-            tbody tr {
-                .noClients {
-                    text-align: center;
-                    @extend .poppins-regular;
-                    font-size: 0.8rem;
-                }
-
-                &:nth-child(even) {
-                    background-color: #f4f4f4;
-                }
-
-                &:hover {
-                    background-color: #bbb;
-                }
-            }
-
-            th {
-                background-color: #f4f4f4;
-            }
-
-        }
+        @extend %table;
 
     }
 }
@@ -303,6 +307,7 @@
     flex-direction: row;
     justify-content: end;
     padding: 5px 0px;
+    margin: 10px 0px;
 
     a {
         text-decoration: none;
@@ -498,4 +503,54 @@
         }
 
     }
+}
+#admin{
+    @extend %main;
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    justify-content:baseline;
+    section {
+        margin: 0 auto;
+        width: 1000%;
+        min-height: 800px;
+        display: flex;
+        flex-direction: row;
+        justify-content: baseline;
+        align-items: left;
+        
+    }
+}
+.table-admin{
+    padding: 20px 0px;
+    width: 95% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @extend %table;
+
+    .tools {
+        width: 100%;
+        display: flex;
+        justify-content: end;
+        padding: 15px 5px;
+    }
+
+    .header {
+        width: 100%;
+        height: 70px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        padding: 0px 15px;
+        @extend .poppins-regular;
+        font-size: 1.8rem;
+        border: 1px solid #ddd;
+        background-color: #f4f4f4;
+        margin-bottom: 25px;
+    }
+}
+#users-show{
+    @extend %main;
+    @extend %show;
 }

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\CreateClientsRequest;
 use App\Models\Clients;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class ClientsController extends Controller
 {
@@ -13,22 +14,22 @@ class ClientsController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-{
- 
-    $clientsCollection = Clients::paginate(10); 
-    $count = Clients::count(); 
+    {
 
-    $clientsCollection->getCollection()->transform(function ($client) {
-        $client->updated_at_format = $client->updated_at->format('d-m-Y');
-        $client->created_at_format = $client->created_at->format('d-m-Y');
-        return $client; 
-    });
+        $clientsCollection = Clients::paginate(10);
+        $count = Clients::count();
 
-    return view('clients/clients', [
-        'clients' => $clientsCollection,
-        'count' => $count,
-    ]);
-}
+        $clientsCollection->getCollection()->transform(function ($client) {
+            $client->updated_at_format = $client->updated_at->format('d-m-Y');
+            $client->created_at_format = $client->created_at->format('d-m-Y');
+            return $client;
+        });
+
+        return view('clients/clients', [
+            'clients' => $clientsCollection,
+            'count' => $count,
+        ]);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -47,7 +48,7 @@ class ClientsController extends Controller
     public function store(CreateClientsRequest $request)
     {
 
-        
+
         $datas = $request->validated();
 
         if ($datas) {
@@ -72,7 +73,7 @@ class ClientsController extends Controller
      */
     public function show(Clients $clients)
     {
-        return view('clients/show',['client'=>$clients]);
+        return view('clients/show', ['client' => $clients]);
     }
 
     /**
@@ -105,11 +106,12 @@ class ClientsController extends Controller
     /**
      * Show the form for remove the specified resource.
      */
-    public function delete(Clients $clients)
+    public function delete(Clients $clients, Auth $Auth)
     {
 
-        Gate::authorize('delete', Clients::class);
-
+        if (Gate::denies('delete', Clients::class)) {
+            return redirect()->route('home')->with('error', Auth::user()->name . ' :  You do not have permission to view this page.');
+        }
         if ($clients)
             return view('admin.clients.delete', ['clients' => $clients]);
         else

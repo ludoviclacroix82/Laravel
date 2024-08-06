@@ -20,5 +20,15 @@ class Clients extends Model
         'created_at'
     ];
 
+    public function getCountClients(){
+
+        return Clients::count();
+
+    }
+
+    public function getClientslimited(){
+
+        return Clients::orderBy('created_at', 'desc')->take(5)->get();
+    }
     
 }

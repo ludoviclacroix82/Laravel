@@ -37,7 +37,6 @@ class InvoicesController extends Controller
             'count' => $count,
         ]);
     }
-
     public function invoicesClient(Invoices $invoices, Clients $clients, User $user)
     {
         $datas = $invoices
@@ -62,7 +61,7 @@ class InvoicesController extends Controller
     public function create(Invoices $invoices, CLients $clients)
     {
 
-        Gate::authorize('create',$invoices);
+        Gate::authorize('create', $invoices);
 
         $clientAll = $invoices->getCompanyForm($clients);
         return view('admin/invoices/create', ['clients' => $clientAll]);
@@ -104,10 +103,11 @@ class InvoicesController extends Controller
      */
     public function edit(Invoices $invoices, Clients $clients)
     {
-        Gate::authorize('update',$invoices);
+        if (Gate::denies('update', $invoices)) {
+            return redirect()->route('home')->with('error', Auth::user()->name . ' :  You do not have permission to view this page.');
+        }
 
         $clientAll = $invoices->getCompanyForm($clients);
-
         return view('admin.invoices.edit', ['invoices' => $invoices, 'clients' => $clientAll]);
     }
 
@@ -127,8 +127,9 @@ class InvoicesController extends Controller
      */
     public function delete(Invoices $invoices)
     {
-        Gate::authorize('delete',$invoices);
-
+        if (Gate::denies('delete', $invoices)) {
+            return redirect()->route('home')->with('error', Auth::user()->name . ' :  You do not have permission to view this page.');
+        }
         if ($invoices)
             return view('admin.invoices.delete', ['invoices' => $invoices]);
         else

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&family=Roboto:wght@400;500;700;900&display=swap");
-.poppins-regular, header nav .link a, header nav .login, header nav .login a, #clients section .header, #invoices section .header, #clients section table, #invoices section table, #clients section table .noinvoices, #invoices section table .noinvoices, #clients section table thead, #invoices section table thead, #clients section table tbody tr .noClients, #invoices section table tbody tr .noClients, #clients-show section .wrap .header, #invoices-show section .wrap .header, #clients-show section .wrap .content, #invoices-show section .wrap .content, #clients-admin section .form .header, #invoices-admin section .form .header, #home section .services, #login .form .header {
+.poppins-regular, header nav .link a, header nav .login, header nav .login a, #clients section table, #invoices section table, .table-admin table, #clients section table .noinvoices, #invoices section table .noinvoices, .table-admin table .noinvoices, #clients section table thead, #invoices section table thead, .table-admin table thead, #clients section table tbody tr .noClients, #invoices section table tbody tr .noClients, .table-admin table tbody tr .noClients, #clients section .header, #invoices section .header, #clients-show section .wrap .header, #invoices-show section .wrap .header, #users-show section .wrap .header, #clients-show section .wrap .content, #invoices-show section .wrap .content, #users-show section .wrap .content, #clients-admin section .form .header, #invoices-admin section .form .header, #home section .services, #login .form .header, .table-admin .header {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal; }
@@ -10,7 +10,7 @@
   font-weight: 500;
   font-style: normal; }
 
-.poppins-semibold, #clients-show section .wrap .content label, #invoices-show section .wrap .content label {
+.poppins-semibold, #clients-show section .wrap .content label, #invoices-show section .wrap .content label, #users-show section .wrap .content label {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-style: normal; }
@@ -79,6 +79,11 @@ template {
 
 [hidden] {
   display: none !important; }
+
+a {
+  color: #000 !important; }
+  a:hover {
+    color: #720909; }
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
@@ -360,7 +365,8 @@ template {
   cursor: pointer; }
   .btn a, .button-custom a, .button-blue a {
     display: inline-block;
-    text-decoration: none; }
+    text-decoration: none;
+    color: #ffffff !important; }
 
 .button-custom {
   background-color: #972222;
@@ -595,6 +601,9 @@ template {
 header {
   width: 100%;
   height: 40px; }
+  header a {
+    color: #fff !important;
+    text-decoration: none; }
   header nav {
     width: 100%;
     height: 40px;
@@ -662,12 +671,46 @@ header {
           background-color: #7a1f1f;
           transition: background-color 0.5s; }
 
-#clients, #invoices, #clients-show, #invoices-show, #clients-admin, #invoices-admin, #home, #login {
+#clients, #invoices, #clients-show, #invoices-show, #users-show, #clients-admin, #invoices-admin, #home, #login, #admin {
   width: 100%;
   min-height: 500px;
   background-color: #fff;
   display: flex;
   flex-direction: row; }
+
+#clients section table, #invoices section table, .table-admin table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem; }
+  #clients section table .noinvoices, #invoices section table .noinvoices, .table-admin table .noinvoices {
+    font-size: 1rem;
+    text-align: center; }
+  #clients section table th, #invoices section table th, .table-admin table th,
+  #clients section table td,
+  #invoices section table td,
+  .table-admin table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    vertical-align: middle; }
+    #clients section table th svg, #invoices section table th svg, .table-admin table th svg,
+    #clients section table td svg,
+    #invoices section table td svg,
+    .table-admin table td svg {
+      cursor: pointer; }
+  #clients section table thead, #invoices section table thead, .table-admin table thead {
+    background-color: #f4f4f4;
+    font-size: 0.9rem;
+    text-align: center; }
+  #clients section table tbody tr .noClients, #invoices section table tbody tr .noClients, .table-admin table tbody tr .noClients {
+    text-align: center;
+    font-size: 0.8rem; }
+  #clients section table tbody tr:nth-child(even), #invoices section table tbody tr:nth-child(even), .table-admin table tbody tr:nth-child(even) {
+    background-color: #f4f4f4; }
+  #clients section table tbody tr:hover, #invoices section table tbody tr:hover, .table-admin table tbody tr:hover {
+    background-color: #bbb; }
+  #clients section table th, #invoices section table th, .table-admin table th {
+    background-color: #f4f4f4; }
 
 #clients, #invoices {
   min-height: 600px !important;
@@ -696,43 +739,12 @@ header {
       border: 1px solid #ddd;
       background-color: #f4f4f4;
       margin-bottom: 25px; }
-    #clients section table, #invoices section table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.8rem; }
-      #clients section table .noinvoices, #invoices section table .noinvoices {
-        font-size: 1rem;
-        text-align: center; }
-      #clients section table th, #invoices section table th,
-      #clients section table td,
-      #invoices section table td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-        vertical-align: middle; }
-        #clients section table th svg, #invoices section table th svg,
-        #clients section table td svg,
-        #invoices section table td svg {
-          cursor: pointer; }
-      #clients section table thead, #invoices section table thead {
-        background-color: #f4f4f4;
-        font-size: 0.9rem;
-        text-align: center; }
-      #clients section table tbody tr .noClients, #invoices section table tbody tr .noClients {
-        text-align: center;
-        font-size: 0.8rem; }
-      #clients section table tbody tr:nth-child(even), #invoices section table tbody tr:nth-child(even) {
-        background-color: #f4f4f4; }
-      #clients section table tbody tr:hover, #invoices section table tbody tr:hover {
-        background-color: #bbb; }
-      #clients section table th, #invoices section table th {
-        background-color: #f4f4f4; }
 
-#clients-show, #invoices-show {
+#clients-show, #invoices-show, #users-show {
   min-height: 600px !important;
   display: flex;
   align-items: baseline; }
-  #clients-show section, #invoices-show section {
+  #clients-show section, #invoices-show section, #users-show section {
     margin: 0 auto;
     width: 80%;
     display: flex;
@@ -740,9 +752,9 @@ header {
     justify-content: center;
     align-items: center;
     margin-top: 100px; }
-    #clients-show section .wrap, #invoices-show section .wrap {
+    #clients-show section .wrap, #invoices-show section .wrap, #users-show section .wrap {
       width: 50%; }
-      #clients-show section .wrap .header, #invoices-show section .wrap .header {
+      #clients-show section .wrap .header, #invoices-show section .wrap .header, #users-show section .wrap .header {
         width: 100%;
         height: 70px;
         display: flex;
@@ -753,32 +765,32 @@ header {
         border: 1px solid #ddd;
         background-color: #f4f4f4;
         margin-bottom: 25px; }
-      #clients-show section .wrap .content, #invoices-show section .wrap .content {
+      #clients-show section .wrap .content, #invoices-show section .wrap .content, #users-show section .wrap .content {
         font-size: 1rem;
         line-height: 1.5rem;
         display: flex;
         justify-content: center; }
-        #clients-show section .wrap .content label, #invoices-show section .wrap .content label {
+        #clients-show section .wrap .content label, #invoices-show section .wrap .content label, #users-show section .wrap .content label {
           font-size: 1.05rem;
           float: left;
           padding-right: 5px; }
-        #clients-show section .wrap .content ul, #invoices-show section .wrap .content ul {
+        #clients-show section .wrap .content ul, #invoices-show section .wrap .content ul, #users-show section .wrap .content ul {
           width: 100%;
           text-align: right;
           padding: 0px 20px; }
-          #clients-show section .wrap .content ul li, #invoices-show section .wrap .content ul li {
+          #clients-show section .wrap .content ul li, #invoices-show section .wrap .content ul li, #users-show section .wrap .content ul li {
             line-height: 2rem; }
-            #clients-show section .wrap .content ul li:nth-child(even), #invoices-show section .wrap .content ul li:nth-child(even) {
+            #clients-show section .wrap .content ul li:nth-child(even), #invoices-show section .wrap .content ul li:nth-child(even), #users-show section .wrap .content ul li:nth-child(even) {
               background-color: #f4f4f4; }
-          #clients-show section .wrap .content ul .description, #invoices-show section .wrap .content ul .description {
+          #clients-show section .wrap .content ul .description, #invoices-show section .wrap .content ul .description, #users-show section .wrap .content ul .description {
             text-align: left; }
-      #clients-show section .wrap .button, #invoices-show section .wrap .button {
+      #clients-show section .wrap .button, #invoices-show section .wrap .button, #users-show section .wrap .button {
         width: 100%;
         padding: 10px 0px;
         display: flex;
         flex-direction: row;
         gap: 20px; }
-        #clients-show section .wrap .button button, #invoices-show section .wrap .button button {
+        #clients-show section .wrap .button button, #invoices-show section .wrap .button button, #users-show section .wrap .button button {
           width: 50% !important; }
 
 #clients-admin, #invoices-admin {
@@ -869,7 +881,8 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: end;
-  padding: 5px 0px; }
+  padding: 5px 0px;
+  margin: 10px 0px; }
   .pagination a {
     text-decoration: none; }
     .pagination a:hover {
@@ -978,5 +991,42 @@ header {
       #login .form form .mb-3 {
         margin-bottom: 1rem;
         width: 90%; }
+
+#admin {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: baseline; }
+  #admin section {
+    margin: 0 auto;
+    width: 1000%;
+    min-height: 800px;
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+    align-items: left; }
+
+.table-admin {
+  padding: 20px 0px;
+  width: 95% !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  .table-admin .tools {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding: 15px 5px; }
+  .table-admin .header {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 0px 15px;
+    font-size: 1.8rem;
+    border: 1px solid #ddd;
+    background-color: #f4f4f4;
+    margin-bottom: 25px; }
 
 /*# sourceMappingURL=app.css.map */

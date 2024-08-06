@@ -4,7 +4,7 @@ namespace App\Policies;
 
 use App\Models\Clients;
 use App\Models\User;
-
+use Illuminate\Auth\Access\Response;
 
 class ClientsPolicy
 {
@@ -43,24 +43,30 @@ class ClientsPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user): bool
+    public function delete(User $user)
     {
-       return $user->role === 'admin';
+        return $user->role === 'admin'
+        ? Response::allow()
+        : Response::deny('You do not have permission to view this page.');
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Clients $clients): bool
+    public function restore(User $user, Clients $clients)
     {
-        return $user->role === 'admin';
+        return $user->role === 'admin'
+            ? Response::allow()
+            : Response::deny('You do not have permission to view this page.');
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Clients $clients): bool
+    public function forceDelete(User $user, Clients $clients)
     {
-        return $user->role === 'admin';
+        return $user->role === 'admin'
+            ? Response::allow()
+            : Response::deny('You do not have permission to view this page.');
     }
 }

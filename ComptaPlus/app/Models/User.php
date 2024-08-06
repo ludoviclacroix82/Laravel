@@ -45,4 +45,15 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function getCountUsers(){
+
+        return User::count();
+
+    }
+
+    public function getUserslimited(){
+
+        return User::orderBy('created_at', 'desc')->take(5)->get();
+    }
 }
