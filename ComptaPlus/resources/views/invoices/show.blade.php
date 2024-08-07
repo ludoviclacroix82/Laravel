@@ -54,13 +54,18 @@
                     </li>
                 </ul>
             </div>
+            
             <div class="button">
+                @can('update',$invoices)
                 <button class="button-blue">
                     <a href="/admin/invoices/edit/{{$invoices->id}}">Update</a>
                 </button>
+                @endcan
+                @can('delete',$invoices)
                 <button class="button-custom">
                     <a href="/admin/invoices/delete/{{$invoices->id}}">Delete</a>
                 </button>
+                @endcan
             </div>
         </div>
     </section>

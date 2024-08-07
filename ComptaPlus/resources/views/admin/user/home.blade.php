@@ -14,7 +14,7 @@
                     <div class="tools">
                         @Auth()
                         <button class="button-custom">
-                            <a href="">
+                            <a href="{{route('admin.users.create')}}">
                                 Création User
                             </a>
                         </button>

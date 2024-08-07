@@ -40,7 +40,7 @@
             </div>
             <div class="button">
                 <button class="button-blue">
-                    <a href="">Update</a>
+                    <a href="{{route('admin.users.edit',$user->id)}}">Update</a>
                 </button>
                 <button class="button-custom">
                     <a href="">Delete</a>

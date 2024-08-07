@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&family=Roboto:wght@400;500;700;900&display=swap");
-.poppins-regular, header nav .link a, header nav .login, header nav .login a, #clients section table, #invoices section table, .table-admin table, #clients section table .noinvoices, #invoices section table .noinvoices, .table-admin table .noinvoices, #clients section table thead, #invoices section table thead, .table-admin table thead, #clients section table tbody tr .noClients, #invoices section table tbody tr .noClients, .table-admin table tbody tr .noClients, #clients section .header, #invoices section .header, #clients-show section .wrap .header, #invoices-show section .wrap .header, #users-show section .wrap .header, #clients-show section .wrap .content, #invoices-show section .wrap .content, #users-show section .wrap .content, #clients-admin section .form .header, #invoices-admin section .form .header, #home section .services, #login .form .header, .table-admin .header {
+.poppins-regular, header nav .link a, header nav .login, header nav .login a, #clients section table, #invoices section table, .table-admin table, #clients section table .noinvoices, #invoices section table .noinvoices, .table-admin table .noinvoices, #clients section table thead, #invoices section table thead, .table-admin table thead, #clients section table tbody tr .noClients, #invoices section table tbody tr .noClients, .table-admin table tbody tr .noClients, #clients section .header, #invoices section .header, #clients-show section .wrap .header, #invoices-show section .wrap .header, #users-show section .wrap .header, #clients-show section .wrap .content, #invoices-show section .wrap .content, #users-show section .wrap .content, #clients-admin section .form .header, #user-admin section .form .header, #invoices-admin section .form .header, #home section .services, #login .form .header, .table-admin .header {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal; }
@@ -402,7 +402,8 @@ template {
 .alert-static {
   position: relative !important;
   animation: none !important;
-  left: 0; }
+  left: 0;
+  width: 100% !important; }
 
 .alert.alert-primary {
   background-color: #cce5ff;
@@ -671,7 +672,7 @@ header {
           background-color: #7a1f1f;
           transition: background-color 0.5s; }
 
-#clients, #invoices, #clients-show, #invoices-show, #users-show, #clients-admin, #invoices-admin, #home, #login, #admin {
+#clients, #invoices, #clients-show, #invoices-show, #users-show, #clients-admin, #user-admin, #invoices-admin, #home, #login, #admin {
   width: 100%;
   min-height: 500px;
   background-color: #fff;
@@ -793,24 +794,24 @@ header {
         #clients-show section .wrap .button button, #invoices-show section .wrap .button button, #users-show section .wrap .button button {
           width: 50% !important; }
 
-#clients-admin, #invoices-admin {
+#clients-admin, #user-admin, #invoices-admin {
   min-height: 600px !important;
   display: flex;
   align-items: center; }
-  #clients-admin section, #invoices-admin section {
+  #clients-admin section, #user-admin section, #invoices-admin section {
     margin: 0 auto;
     width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center; }
-    #clients-admin section .form, #invoices-admin section .form {
+    #clients-admin section .form, #user-admin section .form, #invoices-admin section .form {
       width: 60%;
       margin-top: 80px;
       display: flex;
       flex-direction: column;
       justify-content: center; }
-      #clients-admin section .form .header, #invoices-admin section .form .header {
+      #clients-admin section .form .header, #user-admin section .form .header, #invoices-admin section .form .header {
         width: 100%;
         height: 70px;
         display: flex;
@@ -822,57 +823,57 @@ header {
         background-color: #f4f4f4;
         margin-bottom: 25px;
         margin-top: 25px; }
-      #clients-admin section .form .container, #invoices-admin section .form .container {
+      #clients-admin section .form .container, #user-admin section .form .container, #invoices-admin section .form .container {
         background-color: #f8f9fa;
         padding: 2rem;
         border-radius: .25rem;
         box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); }
-      #clients-admin section .form h2, #invoices-admin section .form h2 {
+      #clients-admin section .form h2, #user-admin section .form h2, #invoices-admin section .form h2 {
         margin-bottom: 1rem; }
-      #clients-admin section .form form, #invoices-admin section .form form {
+      #clients-admin section .form form, #user-admin section .form form, #invoices-admin section .form form {
         width: 90%;
         margin: 0 auto; }
-        #clients-admin section .form form .form-textarea, #invoices-admin section .form form .form-textarea {
+        #clients-admin section .form form .form-textarea, #user-admin section .form form .form-textarea, #invoices-admin section .form form .form-textarea {
           height: 150px !important; }
-        #clients-admin section .form form .form-select, #invoices-admin section .form form .form-select {
+        #clients-admin section .form form .form-select, #user-admin section .form form .form-select, #invoices-admin section .form form .form-select {
           width: 100%;
           height: 35px;
           border: 1px solid #ced4da;
           border-radius: .25rem;
           padding: 5px 15px; }
-          #clients-admin section .form form .form-select:focus, #invoices-admin section .form form .form-select:focus {
+          #clients-admin section .form form .form-select:focus, #user-admin section .form form .form-select:focus, #invoices-admin section .form form .form-select:focus {
             border-color: #7a1f1f;
             background-color: #e9ecef;
             box-shadow: 0 0 0.2rem rgba(38, 143, 255, 0.25); }
-        #clients-admin section .form form .form-control, #invoices-admin section .form form .form-control {
+        #clients-admin section .form form .form-control, #user-admin section .form form .form-control, #invoices-admin section .form form .form-control {
           width: 100%;
           height: 20px;
           border: 1px solid #ced4da;
           border-radius: .25rem;
           transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
           padding: 15px; }
-          #clients-admin section .form form .form-control:focus, #invoices-admin section .form form .form-control:focus {
+          #clients-admin section .form form .form-control:focus, #user-admin section .form form .form-control:focus, #invoices-admin section .form form .form-control:focus {
             border-color: #7a1f1f;
             background-color: #e9ecef;
             box-shadow: 0 0 0.2rem rgba(38, 143, 255, 0.25); }
-        #clients-admin section .form form .form-label, #invoices-admin section .form form .form-label {
+        #clients-admin section .form form .form-label, #user-admin section .form form .form-label, #invoices-admin section .form form .form-label {
           font-weight: 500;
           margin-bottom: .5rem;
           display: flex;
           align-items: start; }
-        #clients-admin section .form form .mb-3, #invoices-admin section .form form .mb-3 {
+        #clients-admin section .form form .mb-3, #user-admin section .form form .mb-3, #invoices-admin section .form form .mb-3 {
           margin-bottom: 1rem;
           width: 90%; }
-    #clients-admin section .delete, #invoices-admin section .delete {
+    #clients-admin section .delete, #user-admin section .delete, #invoices-admin section .delete {
       width: 50%; }
-      #clients-admin section .delete .header, #invoices-admin section .delete .header {
+      #clients-admin section .delete .header, #user-admin section .delete .header, #invoices-admin section .delete .header {
         padding: 15px 0px; }
-      #clients-admin section .delete .button, #invoices-admin section .delete .button {
+      #clients-admin section .delete .button, #user-admin section .delete .button, #invoices-admin section .delete .button {
         display: flex;
         flex-direction: row;
         gap: 20px;
         width: 100%; }
-        #clients-admin section .delete .button button, #invoices-admin section .delete .button button {
+        #clients-admin section .delete .button button, #user-admin section .delete .button button, #invoices-admin section .delete .button button {
           width: 50%; }
 
 .pagination {

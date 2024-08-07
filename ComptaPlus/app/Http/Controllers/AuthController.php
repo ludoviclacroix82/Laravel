@@ -17,7 +17,7 @@ class AuthController extends Controller
 
         $sessionUser = $request->validated();
 
-        if(Auth::attempt($sessionUser)){
+        if(Auth::attempt($sessionUser, $request->filled('remember'))){
             $request->session()->regenerate();
             return redirect()->intended(route('home'))->with('success','user Login !');
         }
@@ -33,4 +33,6 @@ class AuthController extends Controller
         Auth::logout();
         return redirect()->route('auth.login')->with('success','User logout!');
     }
+
+
 }

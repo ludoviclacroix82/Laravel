@@ -165,7 +165,7 @@
                 padding: 10px 0px;
                 display: flex;
                 flex-direction: row;
- gap: 20px;
+                gap: 20px;
                 button{
                     width: 50% !important;
                    
@@ -395,7 +395,11 @@
     @extend %main;
     @extend %admin;
 }
+#user-admin {
 
+    @extend %main;
+    @extend %admin;
+}
 #invoices {
     @extend %main;
     @extend %page;

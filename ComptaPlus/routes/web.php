@@ -67,5 +67,15 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         
         Route::get('/',[UserController::class,'index'])->name('admin.users.home');
         Route::get('/show/{user:id}',[UserController::class,'show'])->name('admin.users.show');
+
+        Route::get('/add', [UserController::class, 'create'])->name('admin.users.create');
+        Route::post('/add', [UserController::class, 'store'])->name('admin.users.store');
+
+        Route::get('/edit/{user:id}', [UserController::class, 'edit'])->name('admin.users.edit');
+        Route::patch('/edit/{user:id}', [UserController::class, 'update'])->name('admin.users.update');
+
+        Route::get('/delete/{user:id}', [UserController::class, 'delete'])->name('admin.users.delete');
+        Route::delete('/delete/{user:id}', [UserController::class, 'destroy']);
+
     });
 });

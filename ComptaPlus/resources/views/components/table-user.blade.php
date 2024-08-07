@@ -28,10 +28,10 @@
                 <a href="{{route('admin.users.show',$user->id)}}">
                     <i class="fas fa-eye"></i>
                 </a>
-                <a href="{">
+                <a href="{{route('admin.users.edit',$user->id)}}">
                     <i class="fas fa-pencil-alt"></i>
                 </a>
-                <a href="">
+                <a href="{{route('admin.users.delete',$user->id)}}">
                     <i class="fas fa-trash-alt" style="color: red;"></i>
                 </a>
             </td>

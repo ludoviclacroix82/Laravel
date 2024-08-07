@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -55,5 +56,15 @@ class User extends Authenticatable
     public function getUserslimited(){
 
         return User::orderBy('created_at', 'desc')->take(5)->get();
+    }
+
+    public function getRole(){
+        $roles = [
+            1 => 'Admin',
+            2=>'User'
+        ];
+
+        return $roles;
+
     }
 }
