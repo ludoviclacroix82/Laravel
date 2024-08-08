@@ -1,4 +1,4 @@
 
-    
+@livewireScripts
 </body>
 </html>

@@ -680,7 +680,7 @@ header {
   flex-direction: row; }
 
 #clients section table, #invoices section table, .table-admin table {
-  width: 100%;
+  width: clamp(800px, 1300px, 1500px);
   border-collapse: collapse;
   font-size: 0.8rem; }
   #clients section table .noinvoices, #invoices section table .noinvoices, .table-admin table .noinvoices {
@@ -800,7 +800,7 @@ header {
   align-items: center; }
   #clients-admin section, #user-admin section, #invoices-admin section {
     margin: 0 auto;
-    width: 80%;
+    width: 80vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1029,5 +1029,7 @@ header {
     border: 1px solid #ddd;
     background-color: #f4f4f4;
     margin-bottom: 25px; }
+  .table-admin table {
+    width: 100% !important; }
 
 /*# sourceMappingURL=app.css.map */

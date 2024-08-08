@@ -23,7 +23,7 @@ class InvoicesFactory extends Factory
             'tva' => fake()->randomElement([21, 12, 5]),
             'description' => fake()->text(200),
             'client_id' => fake()->numberBetween(0, 50),
-            'author_id'=>fake()->randomElement([1,2])
+            'author_id'=>fake()->numberBetween(0,12)
         ];
     }
 }

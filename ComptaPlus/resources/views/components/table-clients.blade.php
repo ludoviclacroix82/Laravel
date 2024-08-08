@@ -8,7 +8,6 @@
             <th>Address</th>
             <th>TVA</th>
             <th>Invoice</th>
-            <th>Updated At</th>
             <th>Created At</th>
             <th>Operation</th>
         </tr>
@@ -32,8 +31,7 @@
                     <i class="fas fa-folder"></i>
                 </a>
             </td>
-            <td>{{$client->updated_at_format}}</td>
-            <td>{{$client->created_at_format}}</td>
+            <td>{{ optional($client->created_at)->format('d-m-Y') }}</td>
             <td>
                 <a href="{{ route('client.show', $client->id) }}">
                     <i class="fas fa-eye"></i>

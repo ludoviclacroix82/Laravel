@@ -7,25 +7,9 @@
 
 <main id='invoices'>
     <section>
-        <div class="tools">
-            @Auth()
-            <button class="button-custom">
-                <a href="{{route('admin.invoices.create')}}">
-                    Création invoices
-                </a>
-            </button>
-            @endauth
-        </div>
-        <div class="header">
-            Invoices
-        </div>
-        <div class="pagination">
-            {{ $invoices->links() }}
-        </div>
-        <x-table-invoices :invoices="$invoices" />
-        <div class="pagination">
-            {{ $invoices->links() }}
-        </div>
+       
+        <livewire:invoices-tables />
+        
     </section>
 </main>
 @endsection

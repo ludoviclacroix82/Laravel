@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             'role'=>'user'
         ]);
 
+        User::factory(15)->create();
         Clients::factory(50)->create();
         Invoices::factory(50)->create();
     }

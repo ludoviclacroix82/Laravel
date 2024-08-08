@@ -8,8 +8,7 @@
 
 %table {
     table{
-
-        width: 100%;
+        width: clamp(800px,1300px,1500px);
         border-collapse: collapse;
         @extend .poppins-regular;
         font-size: 0.8rem;
@@ -30,7 +29,6 @@
                 cursor: pointer;
             }
         }
-    
         thead {
             background-color: #f4f4f4;
             @extend .poppins-regular;
@@ -185,7 +183,7 @@
 
     section {
         margin: 0 auto;
-        width: 80%;
+        width: 80vw;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -522,6 +520,8 @@
         flex-direction: row;
         justify-content: baseline;
         align-items: left;
+
+
         
     }
 }
@@ -552,6 +552,9 @@
         border: 1px solid #ddd;
         background-color: #f4f4f4;
         margin-bottom: 25px;
+    }
+    table{
+        width: 100% !important;
     }
 }
 #users-show{

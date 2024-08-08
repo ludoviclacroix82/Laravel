@@ -7,6 +7,7 @@ use App\Http\Requests\CreateClientsRequest;
 use App\Models\Clients;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\FilterClientsRequest;
 
 class ClientsController extends Controller
 {
@@ -15,19 +16,12 @@ class ClientsController extends Controller
      */
     public function index()
     {
-
-        $clientsCollection = Clients::paginate(10);
-        $count = Clients::count();
-
-        $clientsCollection->getCollection()->transform(function ($client) {
-            $client->updated_at_format = $client->updated_at->format('d-m-Y');
-            $client->created_at_format = $client->created_at->format('d-m-Y');
-            return $client;
-        });
+      
+        
+        $Clients = Clients::all();
 
         return view('clients/clients', [
-            'clients' => $clientsCollection,
-            'count' => $count,
+            'clients' => $Clients,
         ]);
     }
 
