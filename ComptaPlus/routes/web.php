@@ -3,9 +3,11 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientsController;
+use App\Http\Controllers\InboxController;
 use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\UserController;
+use App\Models\Inbox;
 use Illuminate\Support\Facades\Route;
 
 
@@ -82,6 +84,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::delete('/delete/{user:id}', [UserController::class, 'destroy']);
 
     });
+
+    Route::prefix('/inbox')->group(function () {
+        Route::get('/',[InboxController::class,'index'])->name('admin.inbox.home');
+    });
+
 });
 Route::prefix('profil')->middleware('auth')->group(function () {
 

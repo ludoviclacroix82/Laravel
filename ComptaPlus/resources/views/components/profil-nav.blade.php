@@ -11,5 +11,11 @@
                 <i class="fa-solid fa-user"></i> Profil
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('admin.inbox.home')}}">
+                <i class="fas fa-envelope"></i> Inbox
+            </a>
+        </li>
+
     </ul>
 </nav>
