@@ -8,7 +8,7 @@
 <main id='invoices-admin'>
     
     <section>
-    <x-invoices-form :invoices="$invoices" :clientsAll="$clients" />
+    <x-invoices-form :invoices="$invoices" :clientsAll="$clients" :usersAll='$users' />
     </section>
 
 </main>

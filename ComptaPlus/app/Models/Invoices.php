@@ -21,8 +21,10 @@ class Invoices extends Model
         'tva_price',
         'updated_at',
         'created_at',
-        'author_id'
+        'author_id',
+        'to_conclude'
     ];
+
 
     public function totalTva()
     {
@@ -59,10 +61,16 @@ class Invoices extends Model
 
     }
 
-    public function getCompanyForm(Clients $clients)
+    public function getCompanyForm($clients)
     {
         $company = $clients->select('id', 'company')->get();
         return $company;
+    }
+
+    public function getuserForm($user)
+    {
+        $user = $user->select('id', 'name')->get();
+        return $user;
     }
 
     public function getAuthor(User $user)
@@ -74,13 +82,18 @@ class Invoices extends Model
         else
             return 'Unassigned';
     }
-    public function getCountInvoices(){
-
-        return Invoices::count();
-
+    public function getCountInvoices($user_id = null)
+    {
+        if($user_id)
+            return $this->where('author_id',$user_id)->count();
+        else
+            return $this->count();
     }
-    public function getInvoiceslimited(){
+    public function getInvoiceslimited()
+    {
 
-        return Invoices::orderBy('created_at', 'desc')->take(5)->get();
+        return $this->orderBy('created_at', 'desc')->take(5)->get();
     }
+    
 }
+

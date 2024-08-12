@@ -16,11 +16,6 @@
         </ul>
     </div>
     @endif
-    @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-    @endif
     @if($invoices)
     <div class="header">
         Modifier Facture : &nbsp; <strong> {{$invoices->ref}}</strong>
@@ -37,10 +32,36 @@
         @method('patch')
         <input type="hidden" class="form-control" id="ref" name="ref" placeholder="Enter ref" value="{{ old('ref', $invoices->ref ?? '') }}" disabled>
         @endif
+        @can('update',$invoices)
+        <div class="col d-flex justify-content-end">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="to_conclude" name="to_conclude"  {{ $invoices->to_conclude ? 'checked' : '' }}>
+            <label class="form-check-label" for="to_conclude">
+                To Conclude
+            </label>
+        </div>
+        </div>
+        @endcan
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control" id="title" name="title" placeholder="Enter title" value="{{ old('title', $invoices->title ?? '') }}">
         </div>
+        @can('updateAuthor',$invoices)
+        <div class="mb-3">
+            <label for="author" class="form-label">Author</label>
+            <select class="form-select" id="author_id" name="author_id">
+                <option disabled selected value="">Choisissez user</option>
+                @foreach ($usersAll as $user)
+                {{$user->id}}
+                @if(intval(old('author_id', $invoices->author_id ?? '')) === intval($user->id) )
+                <option value="{{ $user->id }}" selected>{{ $user->name }}</option>
+                @else
+                <option value="{{ $user->id }}">{{ $user->name}}</option>
+                @endif
+                @endforeach
+            </select>
+        </div>
+        @endcan
         <div class="mb-3">
             <label for="price" class="form-label">Price</label>
             <input type="number" class="form-control" id="price" name="price" placeholder="Enter price" value="{{ old('price', $invoices->price ?? '') }}">

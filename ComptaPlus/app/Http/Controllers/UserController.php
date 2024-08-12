@@ -80,7 +80,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        if (Gate::denies('create', $user))
+
+        if (Gate::denies('update', $user))
             return redirect()->route('home')->with('error', Auth::user()->name . ' :  You do not have permission to view this page.');
 
         $roles = $user->getRole();
@@ -93,12 +94,12 @@ class UserController extends Controller
      */
     public function update(CreateUsersRequest $request, User $user)
     {
-        if (Gate::denies('create', $user))
+        if (Gate::denies('update', $user))
             return redirect()->route('home')->with('error', Auth::user()->name . ' :  You do not have permission to view this page.');
 
+        
         $datas = $request->validated();
         $datas['updated_at'] = now();
-
         $user->update($datas);
 
         $previousUrl = $request->input('previous_url');

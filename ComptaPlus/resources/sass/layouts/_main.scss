@@ -18,12 +18,17 @@
             font-size: 1rem;
             text-align: center;
         }
+        .filter{
+            cursor: pointer;
+        }
         th,
         td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
             vertical-align: middle;
+            position: relative;
+            height: 50px;
     
             svg {
                 cursor: pointer;
@@ -54,6 +59,27 @@
     
         th {
             background-color: #f4f4f4;
+        }
+        .number-invoices{
+            z-index: 2;
+            @extend .poppins-semibold ;
+            position: relative;
+            top: -20px;
+            left: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color:#fff;
+            font-size: 0.9rem;
+            width: 15px;
+            height: 15px;
+        }
+        .folder{
+            height: 60px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
         }
     }
 
@@ -508,6 +534,7 @@
 }
 #admin{
     @extend %main;
+    @extend .pagination;
     display: flex;
     flex-direction: row;
     align-items: left;

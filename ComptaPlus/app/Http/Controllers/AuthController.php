@@ -19,7 +19,7 @@ class AuthController extends Controller
 
         if(Auth::attempt($sessionUser, $request->filled('remember'))){
             $request->session()->regenerate();
-            return redirect()->intended(route('home'))->with('success','user Login !');
+            return redirect()->intended(route('home'))->with('success'," Login !");
         }
 
         return to_route('auth.login')->withErrors([
@@ -31,7 +31,7 @@ class AuthController extends Controller
 
     public function logout(){
         Auth::logout();
-        return redirect()->route('auth.login')->with('success','User logout!');
+        return redirect()->route('auth.login')->with('success',"logout!");
     }
 
 

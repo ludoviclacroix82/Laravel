@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->integer('client_id');
             $table->integer('author_id');
+            $table->boolean('to_conclude')->default(0);
             $table->date('updated_at');
             $table->date('created_at');
         });

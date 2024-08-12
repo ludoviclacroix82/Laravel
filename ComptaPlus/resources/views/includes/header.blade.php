@@ -52,6 +52,9 @@
                 </a>
                 <a href="/clients">Clients</a>
                 <a href="/invoices">Invoices</a>
+                @auth
+                <a href="/profil">profil</a>
+                @endauth
                 @can('admin.index')
                 <a href="/admin">Admin</a>
                 @endcan

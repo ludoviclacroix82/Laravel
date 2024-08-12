@@ -14,10 +14,12 @@ class InvoicesForm extends Component
      */
     public $invoices;
     public $clientsAll;
-    public function __construct($invoices = null,$clientsAll = null)
+    public $usersAll;
+    public function __construct($invoices = null,$clientsAll = null , $usersAll = null)
     {
         $this->invoices = $invoices;
         $this->clientsAll = $clientsAll;
+        $this->usersAll = $usersAll;
     }
 
     /**

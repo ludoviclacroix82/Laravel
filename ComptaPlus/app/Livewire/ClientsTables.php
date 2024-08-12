@@ -51,10 +51,10 @@ class ClientsTables extends Component
 
         $clients = $query->paginate(15);
 
-        $clients->getCollection()->transform(function ($client) use($invoices){
+
+        foreach($clients as $client){
             $client->nbrInvoices = $invoices->where('client_id',$client->id)->count();
-            return $client;
-        });
+        }
 
         return view('livewire.clients-tables', [
             'clients' => $clients,

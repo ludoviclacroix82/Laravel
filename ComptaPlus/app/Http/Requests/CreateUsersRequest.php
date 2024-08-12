@@ -24,7 +24,9 @@ class CreateUsersRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email',
-            'role' => 'required'
+            'role' => 'nullable',
+            'password' => 'nullable',
+            'passwordConfirm' => 'nullable|same:password'
         ];
     }
 }

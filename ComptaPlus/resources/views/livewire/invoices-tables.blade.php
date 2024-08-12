@@ -35,10 +35,10 @@
     </div>
     <table>
         <thead>
-            <tr>
+
                 <th>#</th>
-                <th>Ref</th>
-                <th>Title</th>
+                <x-table-header :direction="$orderDirection" :name="'Ref'" :field="$orderField">Ref</x-invoices-table-header>
+                <x-table-header :direction="$orderDirection" :name="'title'" :field="$orderField">Title</x-invoices-table-header>
                 <th>Price HT</th>
                 <th>Tva</th>
                 <th>Price TTC</th>
@@ -56,7 +56,6 @@
                 <td>{{$invoice->title}}</td>
                 <td>{{$invoice->price}}</td>
                 <td>{{$invoice->tva}}</td>
-                <!-- <td>{{number_Format($invoice->price + ($invoice->price * ($invoice->tva/100)),2)}}</td> -->
                 <td>{{$invoice->priceTTC}}</td>
                 <td>
                     <a href="/clients/show/{{$invoice->client_id}}">
@@ -67,16 +66,23 @@
                 <td>{{$invoice->created_at_format}}</td>
                 <td>
                     <a href="{{ route('invoice.show', $invoice->id) }}">
-                        <i class="fas fa-eye"></i>
+                        <i class="fas fa-eye" title='View'></i>
                     </a>
                     @can('update', $invoice)
                     <a href="{{ route('admin.invoices.edit', $invoice->id) }}">
-                        <i class="fas fa-pencil-alt"></i>
-                    </a>
+                        <i class="fas fa-pencil-alt" title='Edit'></i>
+                    </a>                       
                     @endcan
+                    @if($invoice->to_conclude === 0) 
+                        <a href="{{ route('admin.invoices.unclosed', $invoice->id) }}">
+                            <i class="fas fa-unlock" title='unclosed'></i>
+                        </a>
+                        @else
+                            <i class="fas fa-lock" title='Contact the administrator to reopen the invoices.'></i>
+                        @endif
                     @can('delete', $invoice)
                     <a href="{{ route('admin.invoices.delete', $invoice->id) }}">
-                        <i class="fas fa-trash-alt" style="color: red;"></i>
+                        <i class="fas fa-trash-alt" style="color: red;" title="Delete"></i>
                     </a>
                     @endcan
                 </td>

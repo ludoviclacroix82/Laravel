@@ -17,6 +17,9 @@ class InvoicesTables extends Component
     public string $client = '';
     public string $author = '';
 
+    public string $orderField = 'ref';
+    public string $orderDirection = 'ASC';
+
     protected $queryString = [
         'ref' => ['except' => ''],
         'title' => ['except' => ''],
@@ -30,16 +33,26 @@ class InvoicesTables extends Component
             $this->resetPage();
     }
 
+
+    public function setOrderFiled(string $name){
+        if($name === $this->orderField){
+            $this->orderDirection = $this->orderDirection === 'ASC'?'DESC':'ASC';
+        }else{
+            $this->orderField = $name;
+            $this->reset('orderDirection');
+        }
+
+    }
+
     public function render(User $user, Clients $clients)
     {
-
-
         $company = $clients->where('company', 'Like', "%$this->client%")->get();
         $companyIds = $company->pluck('id');
 
-        $author = $user->where('name', 'Like', "$this->author%")->get();
-        $authorIds = $author->pluck('id');
 
+        $author = $user->where('name', 'Like', "$this->author%")->get();
+
+        $authorIds = ($this->author === 'Unassigned' || $this->author === 'unassigned' )?[0]:$author->pluck('id');
 
         $query = Invoices::query();
 
@@ -55,17 +68,18 @@ class InvoicesTables extends Component
         if ($this->author)
             $query->whereIn('author_id', $authorIds);
 
-        $invoices = $query->paginate(15);;
+        $invoices = $query
+        ->orderBy($this->orderField ,$this->orderDirection)
+        ->paginate(15);
 
-        $invoices->getCollection()->transform(function ($invoice) use ($clients, $user) {
+        foreach($invoices as $invoice){
             $invoice->priceTTC = $invoice->totalTva();
             $invoice->company = $invoice->getCompany($clients);
             $invoice->author = $invoice->getAuthor($user);
             $invoice->updated_at_format = $invoice->updated_at->format('d-m-Y');
             $invoice->created_at_format = $invoice->created_at->format('d-m-Y');
-            return $invoice;
-        });
-
+        }
+        
         return view(
             'livewire.invoices-tables',
             [

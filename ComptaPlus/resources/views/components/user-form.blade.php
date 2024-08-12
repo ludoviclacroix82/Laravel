@@ -47,6 +47,13 @@
             <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" value="{{ old('email', $users->email ?? '') }}">
         </div>
         <div class="mb-3">
+            <label for="password" class="form-label">password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" value="">
+            <label for="passwordConfirm" class="form-label">password Confirm</label>
+            <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="Enter password" value="">
+        </div>
+        @can('updateAdmin',$users)
+        <div class="mb-3">
             <label for="role" class="form-label">role</label>
             <select class="form-select" id="role" name="role">
                 <option disabled selected value="">Choisissez Client</option>
@@ -59,6 +66,7 @@
                 @endforeach
             </select>
         </div>
+        @endcan
         <button type="submit" class="button-custom">{{ $users ? 'Update' : 'Create' }}</button>
     </form>
 </div>

@@ -58,11 +58,12 @@
                     <td>{{$client->email}}</td>
                     <td>{{$client->address}}</td>
                     <td>{{$client->tva}}</td>
-                    <td>
+                    <td class='folder'>
                         @if($client->nbrInvoices)
                         <a href="{{ route('invoice.client', $client->id) }}">
-                            <i class="fas fa-folder"></i>
+                            <i class="fas fa-folder fa-2x""></i><span class="number-invoices">{{$client->nbrInvoices}}</span>
                         </a>
+                        
                         @endif
                     </td>
                     <td>{{ optional($client->created_at)->format('d-m-Y') }}</td>

@@ -10,7 +10,7 @@
   font-weight: 500;
   font-style: normal; }
 
-.poppins-semibold, #clients-show section .wrap .content label, #invoices-show section .wrap .content label, #users-show section .wrap .content label {
+.poppins-semibold, #clients section table .number-invoices, #invoices section table .number-invoices, .table-admin table .number-invoices, #clients-show section .wrap .content label, #invoices-show section .wrap .content label, #users-show section .wrap .content label {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-style: normal; }
@@ -686,6 +686,8 @@ header {
   #clients section table .noinvoices, #invoices section table .noinvoices, .table-admin table .noinvoices {
     font-size: 1rem;
     text-align: center; }
+  #clients section table .filter, #invoices section table .filter, .table-admin table .filter {
+    cursor: pointer; }
   #clients section table th, #invoices section table th, .table-admin table th,
   #clients section table td,
   #invoices section table td,
@@ -693,7 +695,9 @@ header {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
-    vertical-align: middle; }
+    vertical-align: middle;
+    position: relative;
+    height: 50px; }
     #clients section table th svg, #invoices section table th svg, .table-admin table th svg,
     #clients section table td svg,
     #invoices section table td svg,
@@ -712,6 +716,24 @@ header {
     background-color: #bbb; }
   #clients section table th, #invoices section table th, .table-admin table th {
     background-color: #f4f4f4; }
+  #clients section table .number-invoices, #invoices section table .number-invoices, .table-admin table .number-invoices {
+    z-index: 2;
+    position: relative;
+    top: -20px;
+    left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 0.9rem;
+    width: 15px;
+    height: 15px; }
+  #clients section table .folder, #invoices section table .folder, .table-admin table .folder {
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; }
 
 #clients, #invoices {
   min-height: 600px !important;
@@ -876,7 +898,7 @@ header {
         #clients-admin section .delete .button button, #user-admin section .delete .button button, #invoices-admin section .delete .button button {
           width: 50%; }
 
-.pagination {
+.pagination, #admin {
   width: 100%;
   height: 50px;
   display: flex;
@@ -884,16 +906,16 @@ header {
   justify-content: end;
   padding: 5px 0px;
   margin: 10px 0px; }
-  .pagination a {
+  .pagination a, #admin a {
     text-decoration: none; }
-    .pagination a:hover {
+    .pagination a:hover, #admin a:hover {
       color: #720909 !important; }
-  .pagination nav {
+  .pagination nav, #admin nav {
     display: flex;
     flex-direction: row; }
-    .pagination nav .hidden p {
+    .pagination nav .hidden p, #admin nav .hidden p {
       display: none; }
-    .pagination nav .hidden span {
+    .pagination nav .hidden span, #admin nav .hidden span {
       display: none;
       flex-direction: row; }
 

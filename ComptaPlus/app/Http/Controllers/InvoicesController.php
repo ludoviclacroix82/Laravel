@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
+use function PHPUnit\Framework\isEmpty;
 
 class InvoicesController extends Controller
 {
@@ -101,14 +102,20 @@ class InvoicesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Invoices $invoices, Clients $clients)
+    public function edit(Invoices $invoices, Clients $clients, User $user)
     {
         if (Gate::denies('update', $invoices)) {
             return redirect()->route('home')->with('error', Auth::user()->name . ' :  You do not have permission to view this page.');
         }
 
         $clientAll = $invoices->getCompanyForm($clients);
-        return view('admin.invoices.edit', ['invoices' => $invoices, 'clients' => $clientAll]);
+        $userAll = $invoices->getUserForm($user);
+
+        return view('admin.invoices.edit', [
+            'invoices' => $invoices,
+            'clients' => $clientAll,
+            'users' => $userAll
+        ]);
     }
 
     /**
@@ -116,8 +123,13 @@ class InvoicesController extends Controller
      */
     public function update(CreateInvoicesRequest $request, Invoices $invoices)
     {
+        
         $datas = $request->validated();
+        $toconclude = (isset($datas['to_conclude']))?1:0;
+        $datas['to_conclude'] = $toconclude;
         $invoices->update($datas);
+
+        //dd($datas['to_conclude']);
 
         return redirect()->route('invoices')->with('success', 'Invoices modifiée avec succès !');
     }
@@ -147,5 +159,25 @@ class InvoicesController extends Controller
             return redirect()->to($previousUrl)->with('success', 'Invoice supprimée avec succès !');
         else
             return redirect()->route('invoices')->with('Nofound', 'Invoices No Found !');
+    }
+
+    public function getunclosed(Invoices $invoices){
+        if (Gate::denies('unclosed', $invoices)) {
+            return redirect()->route('home')->with('error', Auth::user()->name . ' :  You do not have permission to view this page.');
+        }
+
+        if ($invoices)
+            return view('admin/invoices/unclosed', ['invoices' => $invoices]);
+        else
+            return redirect()->route('invoices')->with('Nofound', 'Invoices No Found !');
+    }
+
+    public function toConcluded(Invoices $invoices){
+
+        $invoices->to_conclude = 1;
+
+        $invoices->update();
+
+        return redirect()->route('invoices')->with('success', 'Invoices cloturée avec succès !');
     }
 }

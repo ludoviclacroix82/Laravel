@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Auth;
 
 class UserPolicy
 {
@@ -43,7 +44,16 @@ class UserPolicy
      */
     public function update(User $user, User $model): bool
     {
+        return $user->role === 'admin' || $model->id === Auth::user()->id;
+
+    }
+    /**
+     * Determine whether the user can update the model.
+     */
+    public function updateAdmin(User $user, User $model): bool
+    {
         return $user->role === 'admin';
+
     }
 
     /**

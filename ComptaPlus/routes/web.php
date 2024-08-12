@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\InvoicesController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -61,6 +62,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
         Route::get('/delete/{invoices:id}', [InvoicesController::class, 'delete'])->name('admin.invoices.delete');
         Route::delete('/delete/{invoices:id}', [InvoicesController::class, 'destroy']);
+
+        Route::get('/unclosed/{invoices:id}', [InvoicesController::class, 'getunclosed'])->name('admin.invoices.unclosed');
+        route::post('/unclosed/{invoices:id}', [InvoicesController::class, 'toConcluded']);
     });
 
     Route::prefix('/users')->group(function () {
@@ -78,4 +82,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::delete('/delete/{user:id}', [UserController::class, 'destroy']);
 
     });
+});
+Route::prefix('profil')->middleware('auth')->group(function () {
+
+    Route::get('/',[ProfilController::class,'index'])->name('profil.home');
+
+    Route::get('/edit/{user:id}', [UserController::class, 'edit'])->name('profil.edit');
+    Route::patch('/edit/{user:id}', [UserController::class, 'update'])->name('profil.update');
 });

@@ -22,6 +22,7 @@ class ClientsFactory extends Factory
             'email' => fake()->email(),
             'address' =>fake()->address() ,
             'tva' => fake()->stateAbbr().'123456889' ,
+            'created_at' => fake()->dateTimeBetween('-1 year', 'now')
         ];
     }
 }

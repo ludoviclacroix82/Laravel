@@ -28,6 +28,8 @@ class CreateInvoicesRequest extends FormRequest
             'tva' => 'required|min:0',
             'description' => 'nullable',
             'client_id' => 'required',
+            'author_id' => 'nullable',
+            'to_conclude' => 'nullable'
         ];
     }
 
