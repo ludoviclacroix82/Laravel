@@ -87,6 +87,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::prefix('/inbox')->group(function () {
         Route::get('/',[InboxController::class,'index'])->name('admin.inbox.home');
+
+        Route::get('/show/{inbox:id}',[InboxController::class,'show'])->name('admin.inbox.view');
     });
 
 });

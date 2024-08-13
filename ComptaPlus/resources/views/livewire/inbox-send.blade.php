@@ -1,8 +1,7 @@
 <div class="table-admin">
-<table>
+    <table>
         <thead>
             <tr>
-                <th>#</th>
                 <th>subject</th>
                 <th>receiver</th>
                 <th>is_read</th>
@@ -10,19 +9,21 @@
                 <th>action</th>
             </tr>
         </thead>
-        <tbody>            
+        <tbody>
             @foreach($datas as $data)
             <tr>
-                <td>{{$data->id}}</td>
                 <td>{{$data->subject}}</td>
                 <td>{{$data->user}}</td>
                 <td>{{$data->is_read}}</td>
                 <td>{{$data->created_at}}</td>
-                <td></td>
+                <td>
+                    <a href="{{route('admin.inbox.view',$data->id)}}">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                </td>
             </tr>
             @endforeach
         </tbody>
     </table>
- {{$datas->links()}}
+    {{$datas->links()}}
 </div>
-

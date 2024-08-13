@@ -24,8 +24,18 @@ class Inbox extends Model
     {
         return $this->where('receiver_id', $user_id)->count();
     }
-
-    public function getInbox($field, $user_id = null,$paginate = null,$fieldOrder = 'id',$orderDirection = 'ASC')
+    
+    /**
+     * getInbox -> load Inbox en focntion des prama
+     *
+     * @param  mixed $field 
+     * @param  mixed $user_id
+     * @param  mixed $paginate
+     * @param  mixed $fieldOrder OrderBy Field
+     * @param  mixed $orderDirection OrderBy direction ASC / DESC 
+     * @return void
+     */
+    public function getInbox(string $field, int $user_id = null, int $paginate = null, string $fieldOrder = 'id', string $orderDirection = 'ASC')
     {
         $action = ($field === 'sender_id')?'receiver_id':'sender_id';
         $datas = $this
@@ -44,4 +54,7 @@ class Inbox extends Model
         return $datas;
     }
     
+    public function getIsRead(array $datas){
+
+    }
 }

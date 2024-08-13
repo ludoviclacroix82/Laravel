@@ -7,20 +7,22 @@
 }
 
 %table {
-    table{
-        width: clamp(800px,1300px,1500px);
+    table {
+        width: clamp(800px, 1300px, 1500px);
         border-collapse: collapse;
         @extend .poppins-regular;
         font-size: 0.8rem;
-    
-        .noinvoices{
+
+        .noinvoices {
             @extend .poppins-regular;
             font-size: 1rem;
             text-align: center;
         }
-        .filter{
+
+        .filter {
             cursor: pointer;
         }
+
         th,
         td {
             border: 1px solid #ddd;
@@ -29,52 +31,55 @@
             vertical-align: middle;
             position: relative;
             height: 50px;
-    
+
             svg {
                 cursor: pointer;
             }
         }
+
         thead {
             background-color: #f4f4f4;
             @extend .poppins-regular;
             font-size: 0.9rem;
             text-align: center;
         }
-    
+
         tbody tr {
             .noClients {
                 text-align: center;
                 @extend .poppins-regular;
                 font-size: 0.8rem;
             }
-    
+
             &:nth-child(even) {
                 background-color: #f4f4f4;
             }
-    
+
             &:hover {
                 background-color: #bbb;
             }
         }
-    
+
         th {
             background-color: #f4f4f4;
         }
-        .number-invoices{
+
+        .number-invoices {
             z-index: 2;
-            @extend .poppins-semibold ;
+            @extend .poppins-semibold;
             position: relative;
             top: -20px;
             left: 5px;
             display: flex;
             justify-content: center;
             align-items: center;
-            color:#fff;
+            color: #fff;
             font-size: 0.9rem;
             width: 15px;
             height: 15px;
         }
-        .folder{
+
+        .folder {
             height: 60px;
             display: flex;
             flex-direction: row;
@@ -84,6 +89,7 @@
     }
 
 }
+
 %page {
     @extend %main;
     min-height: 600px !important;
@@ -139,7 +145,7 @@
         align-items: center;
         margin-top: 100px;
 
-        .wrap{
+        .wrap {
             width: 50%;
 
             .header {
@@ -155,7 +161,8 @@
                 background-color: #f4f4f4;
                 margin-bottom: 25px;
             }
-            .content{
+
+            .content {
                 @extend .poppins-regular;
                 font-size: 1rem;
                 line-height: 1.5rem;
@@ -163,36 +170,41 @@
                 justify-content: center;
 
                 label {
-                    @extend  .poppins-semibold;
+                    @extend .poppins-semibold;
                     font-size: 1.05rem;
                     float: left;
                     padding-right: 5px;
                 }
-                ul{
+
+                ul {
                     width: 100%;
                     text-align: right;
                     padding: 0px 20px;
+
                     li {
                         line-height: 2rem;
+
                         &:nth-child(even) {
                             background-color: #f4f4f4;
                         }
                     }
-                    .description 
-                    {
+
+                    .description {
                         text-align: left;
                     }
                 }
             }
-            .button{
+
+            .button {
                 width: 100%;
                 padding: 10px 0px;
                 display: flex;
                 flex-direction: row;
                 gap: 20px;
-                button{
+
+                button {
                     width: 50% !important;
-                   
+
                 }
             }
         }
@@ -235,7 +247,8 @@
                 border: 1px solid #ddd;
                 background-color: #f4f4f4;
                 margin-bottom: 25px;
-                margin-top: 25px;;
+                margin-top: 25px;
+                ;
             }
 
             .container {
@@ -253,16 +266,19 @@
             form {
                 width: 90%;
                 margin: 0 auto;
+
                 // Style pour les champs de formulaire
-                .form-textarea{
+                .form-textarea {
                     height: 150px !important;
                 }
-                .form-select{
+
+                .form-select {
                     width: 100%;
                     height: 35px;
                     border: 1px solid #ced4da; // Bordure des champs
                     border-radius: .25rem; // Bord arrondi
                     padding: 5px 15px;
+
                     &:focus {
                         border-color: #7a1f1f; // Couleur de bordure au focus
                         background-color: #e9ecef; // Couleur de fond au focus;
@@ -270,6 +286,7 @@
                     }
 
                 }
+
                 .form-control {
                     width: 100%;
                     height: 20px;
@@ -283,7 +300,7 @@
                         background-color: #e9ecef; // Couleur de fond au focus;
                         box-shadow: 0 0 .2rem rgba(38, 143, 255, .25); // Ombre au focus
                     }
-                    
+
                 }
 
                 // Style pour les labels
@@ -324,6 +341,7 @@
         }
     }
 }
+
 .pagination {
     width: 100%;
     height: 50px;
@@ -358,7 +376,8 @@
         }
     }
 }
-.tools-links{
+
+.tools-links {
     width: 100%;
     text-align: left;
     padding: 15px 0px;
@@ -368,12 +387,14 @@
 
     a {
         text-decoration: none;
-        &:hover{
-            color : #7a1f1f;
+
+        &:hover {
+            color: #7a1f1f;
         }
 
     }
 }
+
 #home {
 
     @extend %main;
@@ -419,11 +440,13 @@
     @extend %main;
     @extend %admin;
 }
+
 #user-admin {
 
     @extend %main;
     @extend %admin;
 }
+
 #invoices {
     @extend %main;
     @extend %page;
@@ -439,11 +462,13 @@
     @extend %main;
     @extend %admin;
 }
-#login{
+
+#login {
     @extend %main;
     display: flex;
     align-items: center;
     justify-content: center;
+
     .form {
         // Style pour le conteneur
         width: 40%;
@@ -464,7 +489,8 @@
             border: 1px solid #ddd;
             background-color: #f4f4f4;
             margin-bottom: 25px;
-            margin-top: 25px;;
+            margin-top: 25px;
+            ;
         }
 
         .container {
@@ -482,16 +508,19 @@
         form {
             width: 90%;
             margin: 0 auto;
+
             // Style pour les champs de formulaire
-            .form-textarea{
+            .form-textarea {
                 height: 150px !important;
             }
-            .form-select{
+
+            .form-select {
                 width: 100%;
                 height: 35px;
                 border: 1px solid #ced4da; // Bordure des champs
                 border-radius: .25rem; // Bord arrondi
                 padding: 5px 15px;
+
                 &:focus {
                     border-color: #7a1f1f; // Couleur de bordure au focus
                     background-color: #e9ecef; // Couleur de fond au focus;
@@ -499,6 +528,7 @@
                 }
 
             }
+
             .form-control {
                 width: 100%;
                 height: 20px;
@@ -512,7 +542,7 @@
                     background-color: #e9ecef; // Couleur de fond au focus;
                     box-shadow: 0 0 .2rem rgba(38, 143, 255, .25); // Ombre au focus
                 }
-                
+
             }
 
             // Style pour les labels
@@ -532,13 +562,15 @@
 
     }
 }
-#admin{
+
+#admin {
     @extend %main;
     @extend .pagination;
     display: flex;
     flex-direction: row;
     align-items: left;
-    justify-content:baseline;
+    justify-content: baseline;
+
     section {
         margin: 0 auto;
         width: 1000%;
@@ -549,10 +581,76 @@
         align-items: left;
 
 
-        
+        .wrap {
+            width: 60%;
+            margin: 0 auto;
+
+            .header {
+                width: 100%;
+                height: 70px;
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                padding: 0px 15px;
+                @extend .poppins-regular;
+                font-size: 1.8rem;
+                border: 1px solid #ddd;
+                background-color: #f4f4f4;
+                margin-bottom: 25px;
+            }
+
+            .content {
+                @extend .poppins-regular;
+                font-size: 1rem;
+                line-height: 1.5rem;
+                display: flex;
+                justify-content: center;
+
+                label {
+                    @extend .poppins-semibold;
+                    font-size: 1.05rem;
+                    float: left;
+                    padding-right: 5px;
+                }
+
+                ul {
+                    width: 100%;
+                    text-align: right;
+                    padding: 0px 20px;
+                    display: flex;
+                    flex-direction: column;
+
+                    li {
+                        line-height: 2rem;
+
+                        &:nth-child(even) {
+                            background-color: #f4f4f4;
+                        }
+                    }
+
+                    .description {
+                        text-align: left;
+                    }
+                }
+            }
+
+            .button {
+                width: 100%;
+                padding: 10px 0px;
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+
+                button {
+                    width: 50% !important;
+
+                }
+            }
+        }
     }
 }
-.table-admin{
+
+.table-admin {
     padding: 20px 0px;
     width: 95% !important;
     display: flex;
@@ -580,11 +678,13 @@
         background-color: #f4f4f4;
         margin-bottom: 25px;
     }
-    table{
+
+    table {
         width: 100% !important;
     }
 }
-#users-show{
+
+#users-show {
     @extend %main;
     @extend %show;
 }

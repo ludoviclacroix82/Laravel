@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&family=Roboto:wght@400;500;700;900&display=swap");
-.poppins-regular, header nav .link a, header nav .login, header nav .login a, #clients section table, #invoices section table, .table-admin table, #clients section table .noinvoices, #invoices section table .noinvoices, .table-admin table .noinvoices, #clients section table thead, #invoices section table thead, .table-admin table thead, #clients section table tbody tr .noClients, #invoices section table tbody tr .noClients, .table-admin table tbody tr .noClients, #clients section .header, #invoices section .header, #clients-show section .wrap .header, #invoices-show section .wrap .header, #users-show section .wrap .header, #clients-show section .wrap .content, #invoices-show section .wrap .content, #users-show section .wrap .content, #clients-admin section .form .header, #user-admin section .form .header, #invoices-admin section .form .header, #home section .services, #login .form .header, .table-admin .header {
+.poppins-regular, header nav .link a, header nav .login, header nav .login a, #clients section table, #invoices section table, .table-admin table, #clients section table .noinvoices, #invoices section table .noinvoices, .table-admin table .noinvoices, #clients section table thead, #invoices section table thead, .table-admin table thead, #clients section table tbody tr .noClients, #invoices section table tbody tr .noClients, .table-admin table tbody tr .noClients, #clients section .header, #invoices section .header, #clients-show section .wrap .header, #invoices-show section .wrap .header, #users-show section .wrap .header, #clients-show section .wrap .content, #invoices-show section .wrap .content, #users-show section .wrap .content, #clients-admin section .form .header, #user-admin section .form .header, #invoices-admin section .form .header, #home section .services, #login .form .header, #admin section .wrap .header, #admin section .wrap .content, .table-admin .header {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal; }
@@ -10,7 +10,7 @@
   font-weight: 500;
   font-style: normal; }
 
-.poppins-semibold, #clients section table .number-invoices, #invoices section table .number-invoices, .table-admin table .number-invoices, #clients-show section .wrap .content label, #invoices-show section .wrap .content label, #users-show section .wrap .content label {
+.poppins-semibold, #clients section table .number-invoices, #invoices section table .number-invoices, .table-admin table .number-invoices, #clients-show section .wrap .content label, #invoices-show section .wrap .content label, #users-show section .wrap .content label, #admin section .wrap .content label {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-style: normal; }
@@ -1028,6 +1028,49 @@ header {
     flex-direction: row;
     justify-content: baseline;
     align-items: left; }
+    #admin section .wrap {
+      width: 60%;
+      margin: 0 auto; }
+      #admin section .wrap .header {
+        width: 100%;
+        height: 70px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        padding: 0px 15px;
+        font-size: 1.8rem;
+        border: 1px solid #ddd;
+        background-color: #f4f4f4;
+        margin-bottom: 25px; }
+      #admin section .wrap .content {
+        font-size: 1rem;
+        line-height: 1.5rem;
+        display: flex;
+        justify-content: center; }
+        #admin section .wrap .content label {
+          font-size: 1.05rem;
+          float: left;
+          padding-right: 5px; }
+        #admin section .wrap .content ul {
+          width: 100%;
+          text-align: right;
+          padding: 0px 20px;
+          display: flex;
+          flex-direction: column; }
+          #admin section .wrap .content ul li {
+            line-height: 2rem; }
+            #admin section .wrap .content ul li:nth-child(even) {
+              background-color: #f4f4f4; }
+          #admin section .wrap .content ul .description {
+            text-align: left; }
+      #admin section .wrap .button {
+        width: 100%;
+        padding: 10px 0px;
+        display: flex;
+        flex-direction: row;
+        gap: 20px; }
+        #admin section .wrap .button button {
+          width: 50% !important; }
 
 .table-admin {
   padding: 20px 0px;

@@ -14,22 +14,22 @@ class InboxPolicy
      */
     public function index(User $user): bool
     {
-        return $user->role === 'admin' || $user->id === Auth::user()->id;
+        return $user->id === Auth::user()->id;
     }
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
-        return $user->role === 'admin' || $user->id === Auth::user()->id;
+        return $user->id === Auth::user()->id;
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user): bool
+    public function view(User $user , Inbox $inbox): bool
     {
-        return $user->role === 'admin' || $user->id === Auth::user()->id;
+        return $user->id === Auth::user()->id && $inbox->sender_id === $user->id || $inbox->receiver_id === $user->id;
     }
 
     /**
@@ -37,7 +37,7 @@ class InboxPolicy
      */
     public function create(User $user): bool
     {
-        return $user->role === 'admin' || $user->id === Auth::user()->id;
+        return $user->id === Auth::user()->id;
     }
 
     /**
@@ -45,7 +45,7 @@ class InboxPolicy
      */
     public function update(User $user, Inbox $inbox): bool
     {
-        return $user->role === 'admin' || $user->id === Auth::user()->id;
+        return $user->id === Auth::user()->id;
     }
 
     /**
