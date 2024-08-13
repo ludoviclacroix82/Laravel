@@ -9,13 +9,13 @@
         <div class="container-fluid">
             <div class="row">
                 <x-profil-nav />
-                <main role="main" class="col-md-10 ms-sm-auto px-4"> 
+                <main role="main" class="col-md-10 ms-sm-auto px-4">
                     <div class="row mt-12 pt-3">
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Receiver Inbox</h5>
-                                    <livewire:inbox-table :datas="$reciverDatas" />
+                                    <h5 class="card-title"> Send Inbox</h5>
+                                    <livewire:inbox-send />
                                 </div>
                             </div>
                         </div>
@@ -24,8 +24,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Send Inbox</h5>
-                                    <livewire:inbox-table :datas="$sendDatas" />
+                                    <h5 class="card-title">Receiver Inbox</h5>
                                 </div>
                             </div>
                         </div>

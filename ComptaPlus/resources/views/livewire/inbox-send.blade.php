@@ -4,8 +4,7 @@
             <tr>
                 <th>#</th>
                 <th>subject</th>
-                <th>sender_id</th>
-                <th>receiver_id</th>
+                <th>receiver</th>
                 <th>is_read</th>
                 <th>created_at</th>
                 <th>action</th>
@@ -16,8 +15,7 @@
             <tr>
                 <td>{{$data->id}}</td>
                 <td>{{$data->subject}}</td>
-                <td>{{$data->sender_id}}</td>
-                <td>{{$data->receiver_id}}</td>
+                <td>{{$data->user}}</td>
                 <td>{{$data->is_read}}</td>
                 <td>{{$data->created_at}}</td>
                 <td></td>
@@ -25,5 +23,6 @@
             @endforeach
         </tbody>
     </table>
- 
+ {{$datas->links()}}
 </div>
+
