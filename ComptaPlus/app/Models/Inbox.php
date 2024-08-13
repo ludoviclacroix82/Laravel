@@ -69,4 +69,17 @@ class Inbox extends Model
             'archive'=> true
         ]);
     }
+
+    public function sendInboxSystem(string $subject , string $body , int $sender_id = 0 , int $receiver_id){
+
+
+        Inbox::created([
+            'subject'=> $subject,
+            'body'=> $body,
+            'sender_id'=>$sender_id,
+            'receiver_id'=>$receiver_id
+        ]);
+
+
+    }
 }

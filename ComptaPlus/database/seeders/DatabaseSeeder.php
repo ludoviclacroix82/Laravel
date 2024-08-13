@@ -19,16 +19,23 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
+            'id' => 0,
+            'name' => 'Systeme',
+            'email' => 'support@comptaPlus.com',
+            'password' => 'root',
+            'role' => 'admin'
+        ]);
+        User::factory()->create([
             'name' => 'Ludovic',
             'email' => 'ludo@comptaPlus.com',
             'password' => 'root',
-            'role'=>'admin'
+            'role' => 'admin'
         ]);
         User::factory()->create([
             'name' => 'user',
             'email' => 'user@comptaPlus.com',
             'password' => 'root',
-            'role'=>'user'
+            'role' => 'user'
         ]);
 
         User::factory(15)->create();

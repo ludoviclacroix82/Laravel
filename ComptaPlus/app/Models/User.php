@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'passwordConfirm',
         'role',
     ];
 
@@ -60,8 +61,8 @@ class User extends Authenticatable
 
     public function getRole(){
         $roles = [
-            1 => 'Admin',
-            2=>'User'
+            1 => 'admin',
+            2=>'user'
         ];
 
         return $roles;
