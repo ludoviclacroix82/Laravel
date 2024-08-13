@@ -52,11 +52,13 @@ class InboxController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Inbox $inbox , )
+    public function show(Inbox $inbox)
     {
         if (Gate::denies('view', $inbox)) {
             return redirect()->route('home')->with('error', Auth::user()->name . ' :  You do not have permission to view this page.');
         }
+
+        $inbox->getIsRead($inbox);
 
         $inbox->user = (Auth::user()->id === $inbox->sender_id)?User::find($inbox->receiver_id)->name:User::find($inbox->sender_id)->name;
         $status = (Auth::user()->id === $inbox->sender_id)?'Receiver':'Sender';

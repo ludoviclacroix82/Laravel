@@ -54,7 +54,10 @@ class Inbox extends Model
         return $datas;
     }
     
-    public function getIsRead(array $datas){
+    public function getIsRead($datas){
 
+        $datas->update([
+            'is_read'=> 1
+        ]);
     }
 }
