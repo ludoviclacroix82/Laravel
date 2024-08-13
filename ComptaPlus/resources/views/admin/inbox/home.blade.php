@@ -14,8 +14,8 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title"> Send Inbox</h5>
-                                    <livewire:inbox-send />
+                                    <h5 class="card-title">Receiver Inbox</h5>
+                                    <livewire:inbox-receiver/>
                                 </div>
                             </div>
                         </div>
@@ -24,7 +24,8 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Receiver Inbox</h5>
+                                    <h5 class="card-title"> Send Inbox</h5>
+                                    <livewire:inbox-send />
                                 </div>
                             </div>
                         </div>

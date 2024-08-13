@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Clients;
 use App\Models\Invoices;
 use App\Models\User;
+use App\Models\Inbox;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
@@ -104,6 +105,8 @@ class InvoicesController extends Controller
      */
     public function edit(Invoices $invoices, Clients $clients, User $user)
     {
+
+
         if (Gate::denies('update', $invoices)) {
             return redirect()->route('home')->with('error', Auth::user()->name . ' :  You do not have permission to view this page.');
         }
@@ -121,15 +124,26 @@ class InvoicesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(CreateInvoicesRequest $request, Invoices $invoices)
+    public function update(CreateInvoicesRequest $request, Invoices $invoices, Inbox $inbox)
     {
-        
+
+        $authororiginal = $invoices->author_id;
         $datas = $request->validated();
-        $toconclude = (isset($datas['to_conclude']))?1:0;
+
+        $toconclude = (isset($datas['to_conclude'])) ? 1 : 0;
         $datas['to_conclude'] = $toconclude;
         $invoices->update($datas);
 
-        //dd($datas['to_conclude']);
+        $changes = $invoices->getChanges();
+
+        //send message changement admin
+        if (Auth::user()->id != $authororiginal) {
+
+          
+            $subject = "Modification : {$invoices->ref}";
+            $body = "Lafacture [{$invoices->ref}] a subit des modification : ";
+            $inbox->sendInboxSystem($changes, $subject, $body, 0, $authororiginal);
+        }
 
         return redirect()->route('invoices')->with('success', 'Invoices modifiée avec succès !');
     }
@@ -161,7 +175,8 @@ class InvoicesController extends Controller
             return redirect()->route('invoices')->with('Nofound', 'Invoices No Found !');
     }
 
-    public function getunclosed(Invoices $invoices){
+    public function getunclosed(Invoices $invoices)
+    {
         if (Gate::denies('unclosed', $invoices)) {
             return redirect()->route('home')->with('error', Auth::user()->name . ' :  You do not have permission to view this page.');
         }
@@ -172,7 +187,8 @@ class InvoicesController extends Controller
             return redirect()->route('invoices')->with('Nofound', 'Invoices No Found !');
     }
 
-    public function toConcluded(Invoices $invoices){
+    public function toConcluded(Invoices $invoices)
+    {
 
         $invoices->to_conclude = 1;
 
