@@ -24,7 +24,7 @@ class InvoicesFactory extends Factory
             'description' => fake()->text(200),
             'client_id' => fake()->numberBetween(1, 50),
             'author_id'=>fake()->numberBetween(1,17),
-            'created_at' => fake()->dateTimeBetween('-1 year', 'now')
+            'created_at' => fake()->dateTimeBetween('-1 year', 'now')            
         ];
     }
 }

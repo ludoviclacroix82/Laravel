@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('subject')->nullable(); 
             $table->text('body'); 
             $table->boolean('is_read')->default(false); 
+            $table->boolean('archive')->default(false); 
             $table->date('updated_at');
             $table->date('created_at');
         });

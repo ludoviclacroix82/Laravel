@@ -17,7 +17,8 @@ class Inbox extends Model
         'body',
         'is_read',
         'updated_at',
-        'created_at'
+        'created_at',
+        'archive'
     ];
 
     public function getInboxCount($user_id = null)
@@ -40,6 +41,7 @@ class Inbox extends Model
         $action = ($field === 'sender_id')?'receiver_id':'sender_id';
         $datas = $this
             ->where($field, $user_id)
+            ->where('archive',0)
             ->orderBy($fieldOrder,$orderDirection)
             ->paginate($paginate);
 
@@ -54,10 +56,17 @@ class Inbox extends Model
         return $datas;
     }
     
-    public function getIsRead($datas){
+    public function putIsRead($datas){
 
         $datas->update([
-            'is_read'=> 1
+            'is_read'=> true
+        ]);
+    }
+
+    public function putIsArchive($datas){
+
+        $datas->update([
+            'archive'=> true
         ]);
     }
 }

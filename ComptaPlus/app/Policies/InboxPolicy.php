@@ -33,6 +33,14 @@ class InboxPolicy
     }
 
     /**
+     * Determine whether the user can view the model.
+     */
+    public function archive(User $user , Inbox $inbox): bool
+    {
+        return $user->id === Auth::user()->id && $inbox->sender_id === $user->id || $inbox->receiver_id === $user->id;
+    }
+
+    /**
      * Determine whether the user can create models.
      */
     public function create(User $user): bool

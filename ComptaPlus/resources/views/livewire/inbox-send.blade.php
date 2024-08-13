@@ -20,6 +20,9 @@
                     <a href="{{route('admin.inbox.view',$data->id)}}">
                         <i class="fas fa-eye"></i>
                     </a>
+                    <a href="{{route('admin.inbox.archive',$data->id)}}">
+                        <i class="fas fa-archive"></i>
+                    </a>
                 </td>
             </tr>
             @endforeach

@@ -89,6 +89,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('/',[InboxController::class,'index'])->name('admin.inbox.home');
 
         Route::get('/show/{inbox:id}',[InboxController::class,'show'])->name('admin.inbox.view');
+        Route::get('/archive/{inbox:id}',[InboxController::class,'archive'])->name('admin.inbox.archive');
     });
 
 });

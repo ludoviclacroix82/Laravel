@@ -19,18 +19,8 @@ class InboxController extends Controller
             return redirect()->route('home')->with('error', Auth::user()->name . ' :  You do not have permission to view this page.');
         }
 
-        $inboxDatasReciever = $inbox->where('receiver_id', Auth::user()->id)->get();
-        $inboxDatasSend = $inbox->where('sender_id', Auth::user()->id)->get();
-
-        // dd($inboxDatasReciever);
-
         return view(
-            'admin.inbox.home',
-            [
-                'sendDatas' => $inboxDatasSend,
-                'reciverDatas' => $inboxDatasReciever
-            ]
-        );
+            'admin.inbox.home');
     }
 
     /**
@@ -58,7 +48,7 @@ class InboxController extends Controller
             return redirect()->route('home')->with('error', Auth::user()->name . ' :  You do not have permission to view this page.');
         }
 
-        $inbox->getIsRead($inbox);
+        $inbox->putIsRead($inbox);
 
         $inbox->user = (Auth::user()->id === $inbox->sender_id)?User::find($inbox->receiver_id)->name:User::find($inbox->sender_id)->name;
         $status = (Auth::user()->id === $inbox->sender_id)?'Receiver':'Sender';
@@ -67,6 +57,17 @@ class InboxController extends Controller
             'datas' => $inbox,
             'status' => $status
         ]);
+    }
+
+    public function archive(Inbox $inbox){
+
+        if (Gate::denies('archive', $inbox)) {
+            return redirect()->route('home')->with('error', Auth::user()->name . ' :  You do not have permission to view this page.');
+        }
+
+        $inbox->putIsArchive($inbox);
+
+        return redirect()->back()->with('success', "{$inbox->subject} archivé");
     }
 
     /**
