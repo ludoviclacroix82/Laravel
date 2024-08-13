@@ -19,7 +19,7 @@ class InboxSend extends Component
     public function render(Inbox $inbox)
     {
 
-        $datas = $inbox->getInbox('sender_id',Auth::user()->id,5);
+        $datas = $inbox->getInbox('sender_id',Auth::user()->id,5,'created_at','DESC');
         return view('livewire.inbox-send',[
             'datas'=>$datas
         ]);

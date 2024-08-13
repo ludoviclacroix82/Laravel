@@ -25,10 +25,18 @@ class Inbox extends Model
         return $this->where('receiver_id', $user_id)->count();
     }
 
-    public function getInbox($field, $user_id = null,$paginate = null)
+    public function getInbox($field, $user_id = null,$paginate = null,$fieldOrder = 'id',$orderDirection = 'ASC')
     {
         $action = ($field === 'sender_id')?'receiver_id':'sender_id';
-        $datas = $this->where($field, $user_id)->paginate($paginate);
+        $datas = $this
+            ->where($field, $user_id)
+            ->orderBy($fieldOrder,$orderDirection)
+            ->paginate($paginate);
+
+        foreach($datas as $data){
+            $data['user'] = User::find($data[$field]);
+            $data['is_read'] = ($data['is_read'] === 0 )?'unread':'read';
+        }
 
         foreach($datas as $data){
             $data['user']= user::find($data[$action])->name;
