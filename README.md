@@ -61,10 +61,3 @@ L'exercice **Compa Plus** est un exercice plus approfondi qui introduit des conc
     ```
 
 
-## License
-
-Ce projet est sous licence MIT. Veuillez consulter le fichier LICENSE pour plus de détails. 
-
----
-
-Ce README est destiné à être modifié au fur et à mesure que de nouvelles fonctionnalités sont ajoutées ou que des changements sont apportés au projet.
