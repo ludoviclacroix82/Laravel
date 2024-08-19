@@ -97,10 +97,31 @@ class UserController extends Controller
         if (Gate::denies('update', $user))
             return redirect()->route('home')->with('error', Auth::user()->name . ' :  You do not have permission to view this page.');
 
-        
+
         $datas = $request->validated();
         $datas['updated_at'] = now();
-        $user->update($datas);
+
+        if ($datas['password'] === null && $datas['passwordConfirm'] === null) {
+            $user->update(
+                [
+                    'name' => $datas['name'],
+                    'role' => $datas['role'],
+                    'email' => $datas['email'],
+                ]
+            );
+        }else{
+            $user->update(
+                [
+                    'name' => $datas['name'],
+                    'role' => $datas['role'],
+                    'email' => $datas['email'],
+                    'password' => $datas['password']
+                ]
+            );
+        }
+
+
+
 
         $previousUrl = $request->input('previous_url');
 
@@ -114,12 +135,12 @@ class UserController extends Controller
         if (Gate::denies('delete', $user))
             return redirect()->route('home')->with('error', Auth::user()->name . ' :  You do not have permission to view this page.');
 
-        return view('admin.user.delete',['users'=>$user]);
+        return view('admin.user.delete', ['users' => $user]);
     }
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user , Request $request)
+    public function destroy(User $user, Request $request)
     {
         $result = $user->delete();
         $previousUrl = $request->input('previous_url');

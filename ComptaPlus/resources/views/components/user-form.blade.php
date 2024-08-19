@@ -55,13 +55,14 @@
         @can('updateAdmin',$users)
         <div class="mb-3">
             <label for="role" class="form-label">role</label>
+            
             <select class="form-select" id="role" name="role">
-                <option disabled selected value="">Choisissez Client</option>
+                <option disabled selected value="">Choisissez Role</option>
                 @foreach ($roles as $key => $role)
-                    @if( ($users) && old('role', $users->role ?? '') === $role)
-                    <option value="{{ $role}}" selected>{{ $role}}</option>
+                    @if( $users->role === $role)
+                    <option value="{{$role}}" selected>{{ucfirst($role)}}</option>
                     @else
-                    <option value="{{ $role }}">{{ $role }}</option>
+                    <option value="{{$role }}">{{ucfirst($role)}}</option>
                     @endif
                 @endforeach
             </select>

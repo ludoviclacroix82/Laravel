@@ -22,9 +22,9 @@ class InvoicesFactory extends Factory
             'price' => fake()->numberBetween(100, 500),
             'tva' => fake()->randomElement([21, 12, 5]),
             'description' => fake()->text(200),
-            'client_id' => fake()->numberBetween(0, 50),
-            'author_id'=>fake()->numberBetween(0,12),
-            'created_at' => fake()->dateTimeBetween('-1 year', 'now')
+            'client_id' => fake()->numberBetween(1, 50),
+            'author_id'=>fake()->numberBetween(1,17),
+            'created_at' => fake()->dateTimeBetween('-1 year', 'now')            
         ];
     }
 }
