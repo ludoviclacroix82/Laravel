@@ -59,6 +59,7 @@ L'exercice **Compa Plus** est un exercice plus approfondi qui introduit des conc
 6. **Lancer le serveur de développement** :
     ```bash
     php artisan serve
+    npm run dev
     ```
 
 ## Contributions
