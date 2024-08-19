@@ -51,10 +51,7 @@ L'exercice **Compa Plus** est un exercice plus approfondi qui introduit des conc
 
 ## Auteur
 
-Créé par Ludovic - [ttps://github.com/ludoviclacroix82].
+Créé par Ludovic - [Https://github.com/ludoviclacroix82](Https://github.com/ludoviclacroix82).
 
-## License
-
-Ce projet est sous licence MIT. Veuillez consulter le fichier LICENSE pour plus de détails. 
 
 
