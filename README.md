@@ -1,7 +1,5 @@
 # Laravel
 
-# README
-
 ## Description du Projet
 
 Ce dépôt contient une série d'exercices visant à maîtriser le framework **Laravel**. Chaque exercice explore des fonctionnalités spécifiques de Laravel, permettant ainsi une compréhension progressive et approfondie du framework.
@@ -62,13 +60,6 @@ L'exercice **Compa Plus** est un exercice plus approfondi qui introduit des conc
     npm run dev
     ```
 
-## Contributions
-
-Les contributions sont les bienvenues ! N'hésitez pas à proposer des améliorations ou à signaler des bugs en ouvrant une issue ou en soumettant une pull request.
-
-## Auteur
-
-Créé par [Votre Nom] - [Votre Email].
 
 ## License
 
